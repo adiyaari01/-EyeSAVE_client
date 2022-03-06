@@ -1,0 +1,15 @@
+.nav-item a,.nav-item button {
+    display: flex;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left:20px;
+    justify-content: left;
+    cursor: pointer;
+    gap: 20px;
+    align-items: center;
+    font-size: 30px;
+    text-decoration:none;
+}
+
+/* color: white; */
+/* background-color: #3F424C; */

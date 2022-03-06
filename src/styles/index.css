@@ -1,0 +1,15 @@
+body {
+  margin: 0;
+  box-sizing: border-box;
+  height: 100vh;
+  background-color: #575E68;
+}
+
+ul {
+  padding: 0 !important;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  padding-inline-start: 0;
+}
+
+
