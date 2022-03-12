@@ -42,8 +42,8 @@ export default () => {
         <NavLinkItem to="forms" label="Forms" Icon={FormsIcon}/>
         <NavLinkItem to="messages" label="Messages" Icon={MessageIcon}/>
         <NavLinkItem to="attendance" label="Attendance" Icon={AttendanceIcon}/>
-        <NavLinkItem to="childrenInfo" label="ChildrenInfo" Icon={ChildrenIcon}/>
-        <NavLinkItem to="kindergarten" label="StaffInfo" Icon={StaffIcon}/>
+        <NavLinkItem to="children" label="ChildrenInfo" Icon={ChildrenIcon}/>
+        <NavLinkItem to="staff" label="StaffInfo" Icon={StaffIcon}/>
         <NavLinkItem handleClick={handleLogout} label="Logout" Icon={LogoutIcon}/>
     </List>
 }

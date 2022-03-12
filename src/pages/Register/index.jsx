@@ -47,7 +47,7 @@ const Login = () => {
             <TextField fullWidth id="standard-basic" label="Confirm Password" variant="standard" placeholder="Enter again your password" />
             <FormControlLabel
               control={<Checkbox defaultChecked color="default" />}
-              label="I accept the terma and conditions."
+              label="I accept the terms and conditions."
             />
             <Button type='submit' variant="contained" style={btnStyle} color="secondary" fullWidth onClick={handleLogin}>
               SIGN UP
