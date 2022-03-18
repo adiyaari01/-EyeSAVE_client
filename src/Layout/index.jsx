@@ -37,6 +37,7 @@ export default memo(() => {
           >
             <MenuIcon />
           </IconButton>
+          <div style={{display: "flex", flexGrow: 1}}></div>
           <SearchIcon />
         </Toolbar>
       </AppBar>

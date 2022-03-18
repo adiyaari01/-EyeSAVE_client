@@ -23,7 +23,7 @@ const initializeStaffInfoState = ({setSelf, onSet}) => {
 
 export const IsLoggedInState = atom({
     key: "IsLoggedInState",
-    default: false
+    default: false //TODO: change to false
 })
 
 export const childrenAttendanceState = atom({

@@ -20,7 +20,7 @@ const NavLinkItem = ({Icon, to, label, handleClick}) => <div className="nav-item
     {
         to
             ? <NavLink to={to} style={{color: "white"}}><Icon fontSize="large"/>{label}</NavLink>
-            : <Button onClick={handleClick} style={{color: "white"}}><Icon fontSize="large"/>{label}</Button>
+            : <Button component="a" onClick={handleClick} style={{color: "white"}}><Icon fontSize="large"/>{label}</Button>
     }
 </div>
 

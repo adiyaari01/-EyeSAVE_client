@@ -9,6 +9,9 @@
     align-items: center;
     font-size: 30px;
     text-decoration:none;
+    text-transform: capitalize;
+    line-height: normal;
+    font-family: "Times New Roman";
 }
 
 /* color: white; */

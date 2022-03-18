@@ -1,17 +1,25 @@
-import { Container } from "@mui/material";
+import { Container, Stack } from "@mui/material";
 import { useRecoilValue } from "recoil";
-import { staffAttendanceState } from "../../state/atoms";
 import { staffInfoState } from "../../state/atoms";
+import { List } from "./List";
 
 export default () => {
   /* TODO: react-query vs axios */
   // if axios we should use effect of react
-  const staffAttendance = useRecoilValue(staffAttendanceState);
-  const staffInfo = useRecoilValue(staffInfoState);
-  console.log(staffAttendance);
-  console.log(staffInfo);
-  return <Container>Staff Info</Container>
-//   return <div> <Container>{JSON.stringify(staffAttendance)}
+  const staff = useRecoilValue(staffInfoState);
+  console.log(staff);
+  return (
+    <Container>
+      <Stack
+        justifyContent={"center"}
+        direction={"row"}
+        flexWrap="wrap"
+        gap={3}
+      ></Stack>
+      <List items={staff} />
+    </Container>
+  );
+//   return <div> <Container>{JSON.stringify(childrenAttendance)}
 //       {JSON.stringify(staffAttendance)}
 //       </Container></div>
 };

@@ -8,7 +8,8 @@ export default function Success() {
         Thank you!
       </Typography>
       <Typography component="p" align="center">
-      Your form has been successfully submitted.      </Typography>
+        Your form has been successfully submitted.
+      </Typography>
     </>
   );
 }

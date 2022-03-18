@@ -7,8 +7,10 @@ import PlayIcon from "@mui/icons-material/PlayCircleFilledWhiteOutlined";
 import MessageIcon from "@mui/icons-material/MailOutline";
 import StaffIcon from "@mui/icons-material/PeopleOutlineOutlined";
 import ChildrenIcon from "@mui/icons-material/ChildCareOutlined";
+import FormsIcon from '@mui/icons-material/DescriptionOutlined';
 import Grid from "@mui/material/Grid";
 import { CardUseStyles } from "./GridUseStyles";
+
 import "./styles.css";
 
 export default memo(() => {
@@ -37,9 +39,9 @@ export default memo(() => {
   // };
   return (
     <>
-      <Grid container spacing={2} justifyContent="center" mb={2}>
+      <Grid container spacing={2} justifyContent="center" mb={2} >
         <Grid item xs={10} sm={4} md={4}>
-          <Card align="center" classes={cardClasses}>
+          <Card align="center" classes={cardClasses} >
             <CardHeader title="Watch LIVE" />
             <CardContent>
               <PlayIcon sx={{ fontSize: "100px" }} />
@@ -56,11 +58,19 @@ export default memo(() => {
         </Grid>
       </Grid>
       <Grid container spacing={2} justifyContent="center" mt={2}>
+      <Grid item xs={10} sm={2.5} md={2.5}>
+          <Card align="center" classes={cardClasses}>
+            <CardHeader title="Forms"/>
+            <CardContent>
+              <FormsIcon sx={{ fontSize: "100px" }} />
+            </CardContent>
+          </Card>
+        </Grid>
         <Grid item xs={10} sm={2.5} md={2.5}>
           <Card align="center" classes={cardClasses}>
             <CardHeader title="Messages" />
             <CardContent>
-              <MessageIcon sx={{ fontSize: "100px" }} />
+              <MessageIcon sx={{ fontSize: "100px"}} />
             </CardContent>
           </Card>
         </Grid>
@@ -69,14 +79,6 @@ export default memo(() => {
             <CardHeader title="Staff info"/>
             <CardContent>
               <StaffIcon sx={{ fontSize: "100px" }} />
-            </CardContent>
-          </Card>
-        </Grid>
-        <Grid item xs={10} sm={2.5} md={2.5}>
-          <Card align="center" classes={cardClasses}>
-            <CardHeader title="Children info"/>
-            <CardContent>
-              <ChildrenIcon sx={{ fontSize: "100px" }} />
             </CardContent>
           </Card>
         </Grid>
