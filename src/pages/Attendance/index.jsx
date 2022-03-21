@@ -23,24 +23,24 @@ export default () => {
   const allChildren = useRecoilValue(childrenInfoState);
   const staffAttendance = useRecoilValue(staffAttendanceState);
 
+  const todayReports = childrenAttendance.filter(
+    (report) => report._date === getCurrentDate()
+  );
+  console.log("todayReports", todayReports);
+
   console.log(childrenAttendance);
   console.log(allChildren);
-  const arrived = allChildren.filter((child) =>
-    childrenAttendance.find((attendance) => {
-      const currentChild = attendance._childId === child._id;
-      const today = attendance._date === getCurrentDate();
-      const isArrived = attendance._arrivalTime;
-      return currentChild && today && isArrived;
-    })
+  const chldrenWithReports = allChildren.map((child) => {
+    const attendance = todayReports.find((r) => r._childId === child._id);
+    return { ...child, report: attendance };
+  });
+
+  const arrived = chldrenWithReports.filter(
+    (child) => child.report?._arrivalTime
   );
 
-  const lates = allChildren.filter((child) =>
-    childrenAttendance.find((attendance) => {
-      const currentChild = attendance._childId === child._id;
-      const today = attendance._date === getCurrentDate();
-      const late = attendance._childDelay === true && !attendance._arrivalTime;
-      return currentChild && today && late;
-    })
+  const lates = chldrenWithReports.filter(
+    (child) => child.report?._childDelay === true && !child.report?._arrivalTime
   );
 
   const absance = allChildren.filter((child) =>
@@ -62,7 +62,7 @@ export default () => {
     );
   });
 
-  console.log("arrived", arrived);
+  console.log("arrivedItems", arrived);
   console.log("lates", lates);
   console.log("unknow", unknow);
   console.log("absance", absance);
@@ -74,16 +74,12 @@ export default () => {
         direction={"row"}
         flexWrap="wrap"
         gap={3}
-      ></Stack>
-      <List items={arrived} />
-      <hr />
-      <List items={lates} />
-
-      <hr />
-      <List items={unknow} />
-
-      <hr />
-      <List items={absance} />
+      >
+        <List items={arrived} />
+        <List items={lates} />
+        <List items={unknow} />
+        <List items={absance} />
+      </Stack>
     </Container>
   );
   //   return <div> <Container>{JSON.stringify(childrenAttendance)}

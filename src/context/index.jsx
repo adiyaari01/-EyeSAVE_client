@@ -92,6 +92,22 @@ const AppProvider = ({ children }) => {
     setFormValues(cloneValues);
   };
 
+  const handleSubmit = () =>{
+    console.log("forms values", formValues)
+    const cloneValues = JSON.parse(JSON.stringify(formValues))
+    for(let i in cloneValues){
+      cloneValues[i] = Object.keys(cloneValues[i]).reduce((total, current) => {
+            total[current] = cloneValues[i][current].value
+            return total;
+        }, {})
+    }
+    const { parent, child, escort} = cloneValues;
+
+    console.log("clone", cloneValues)
+
+    // 3 post request
+    // handleNext();
+  }
   return (
     <AppContext.Provider
       value={{
@@ -101,6 +117,7 @@ const AppProvider = ({ children }) => {
         handleChange,
         handleNext,
         handleBack,
+        handleSubmit,
         variant,
         margin
       }}

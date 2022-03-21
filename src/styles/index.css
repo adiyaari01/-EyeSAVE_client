@@ -3,6 +3,7 @@ body {
   box-sizing: border-box;
   height: 100vh;
   background-color: #575E68;
+  color: "#E3E3E3";
 }
 
 ul {

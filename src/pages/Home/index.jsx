@@ -11,32 +11,12 @@ import FormsIcon from '@mui/icons-material/DescriptionOutlined';
 import Grid from "@mui/material/Grid";
 import { CardUseStyles } from "./GridUseStyles";
 
-import "./styles.css";
+
+
+
 
 export default memo(() => {
   const cardClasses = CardUseStyles()
-  // const bigCardStyle = {
-  //   height: "50%",
-  //   maxWidth: 345,
-  //   padding: "65px 25px",
-  //   textAlign: "center",
-  //   backgroundColor: "#3F424C",
-  //   margin: "35px 0px",
-  //   borderRadius: 16,
-  //   color: "white",
-  //   boxShadow:
-  //     "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)",
-  // };
-  // const smallCardStyle = {
-  //   padding: "35px 10px",
-  //   margin: "35px 0px",
-  //   textAlign: "center",
-  //   backgroundColor: "#3F424C",
-  //   borderRadius: 16,
-  //   color: "white",
-  //   boxShadow:
-  //     "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)",
-  // };
   return (
     <>
       <Grid container spacing={2} justifyContent="center" mb={2} >

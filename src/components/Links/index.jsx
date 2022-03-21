@@ -11,6 +11,7 @@ import ChildrenIcon from '@mui/icons-material/ChildCareOutlined';
 import FormsIcon from '@mui/icons-material/DescriptionOutlined';
 import AttendanceIcon from '@mui/icons-material/AssignmentTurnedInOutlined';
 import LogoutIcon from '@mui/icons-material/Logout';
+import EventsIcon from '@mui/icons-material/TheaterComedy';
 import {Button} from "@mui/material";
 import "./styles.css";
 
@@ -19,8 +20,8 @@ import "./styles.css";
 const NavLinkItem = ({Icon, to, label, handleClick}) => <div className="nav-item">
     {
         to
-            ? <NavLink to={to} style={{color: "white"}}><Icon fontSize="large"/>{label}</NavLink>
-            : <Button component="a" onClick={handleClick} style={{color: "white"}}><Icon fontSize="large"/>{label}</Button>
+            ? <NavLink to={to} style={{color: "#E3E3E3"}}><Icon fontSize="large"/>{label}</NavLink>
+            : <Button component="a" onClick={handleClick} style={{color: "#E3E3E3"}}><Icon fontSize="large"/>{label}</Button>
     }
 </div>
 
@@ -44,6 +45,7 @@ export default () => {
         <NavLinkItem to="attendance" label="Attendance" Icon={AttendanceIcon}/>
         <NavLinkItem to="children" label="ChildrenInfo" Icon={ChildrenIcon}/>
         <NavLinkItem to="staff" label="StaffInfo" Icon={StaffIcon}/>
+        <NavLinkItem to="events" label="Events" Icon={EventsIcon}/>
         <NavLinkItem handleClick={handleLogout} label="Logout" Icon={LogoutIcon}/>
     </List>
 }

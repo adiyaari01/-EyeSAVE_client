@@ -9,6 +9,8 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Attendance from "./pages/Attendance";
 import Children from "./pages/Children";
+import Staff from "./pages/Staff";
+import Events from "./pages/Events";
 import ChildRegistrationForm from "./pages/ChildRegistrationForm";
 
 export default () => {
@@ -23,7 +25,8 @@ export default () => {
               <Route path="/kindergarten" element={<Kindergarten />} />
               <Route path="/attendance" element={<Attendance />} />
               <Route path="/children" element={<Children />} />
-              <Route path="/staff" element={<Children />} />
+              <Route path="/staff" element={<Staff />} />
+              <Route path="/events" element={<Events />} />
             </Route>
           </>
         ) : (

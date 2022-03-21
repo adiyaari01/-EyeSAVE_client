@@ -7,7 +7,7 @@ export default () => {
   /* TODO: react-query vs axios */
   // if axios we should use effect of react
   const staff = useRecoilValue(staffInfoState);
-  console.log(staff);
+  console.log("staff", staff);
   return (
     <Container>
       <Stack

@@ -1,4 +1,4 @@
-import { Card, Container, Stack, Typography, Avatar } from "@mui/material";
+import { Card, Stack, Typography } from "@mui/material";
 
 export function List(props) {
   return (
@@ -6,7 +6,7 @@ export function List(props) {
       {props.items.map((children) => {
         // const exists
         return (
-          <Card key={children._id} sx={{ width: 280, height: 200, backgroundColor: "#3F424C !important", color: "#E3E3E3 !important",
+          <Card key={children._id} sx={{ width: 280, height: 200, backgroundColor: "#3F424C !important",
           borderRadius : "5px !important", boxShadow: 3}} >
             <Stack alignItems={'center'} gap={1} p={2}>
               <img

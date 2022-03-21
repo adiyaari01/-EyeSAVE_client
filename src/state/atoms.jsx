@@ -1,8 +1,5 @@
 import { atom } from "recoil";
-import { getChildrenAttendance } from "../api"
-import { getStaffAttendance } from "../api"
-import { getStaff } from "../api"
-import { getChildren } from "../api"
+import { getChildrenAttendance, getStaff, getStaffAttendance, getChildren, getEvents } from "../api"
 
 
 const initializeChildrenAttendanceState = ({setSelf, onSet}) => {
@@ -20,10 +17,13 @@ const initializeChildrenInfoState = ({setSelf, onSet}) => {
 const initializeStaffInfoState = ({setSelf, onSet}) => {
     setSelf(getStaff());
 }
+const initializeEventsState = ({setSelf, onSet}) => {
+    setSelf(getEvents());
+}
 
 export const IsLoggedInState = atom({
     key: "IsLoggedInState",
-    default: false //TODO: change to false
+    default: true //TODO: change to false
 })
 
 export const childrenAttendanceState = atom({
@@ -48,4 +48,10 @@ export const staffInfoState = atom({
     key: "staffInfoState",
     default: null,
     effects_UNSTABLE: [initializeStaffInfoState]
+})
+
+export const eventsState = atom({
+    key: "evetnsState",
+    default: null,
+    effects_UNSTABLE: [initializeEventsState]
 })

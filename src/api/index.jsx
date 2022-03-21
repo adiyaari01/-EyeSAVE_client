@@ -21,3 +21,10 @@ export const getStaff = async () => {
     const { body } = await superagent.get(`${BASE_URL}/staff`)
     return body;
 }; 
+
+export const getEvents = async () => {
+    const { body } = await superagent.get(`${BASE_URL}/events`)
+    return body;
+}; 
+
+export const postStaff = (newStaff) => superagent.post(`${BASE_URL}/staff`).send(newStaff);

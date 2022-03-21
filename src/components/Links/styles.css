@@ -7,12 +7,9 @@
     cursor: pointer;
     gap: 20px;
     align-items: center;
-    font-size: 30px;
+    font-size: 20px;
     text-decoration:none;
     text-transform: capitalize;
     line-height: normal;
-    font-family: "Times New Roman";
+    font-family: "Roboto","Helvetica","Arial",sans-serif;
 }
-
-/* color: white; */
-/* background-color: #3F424C; */

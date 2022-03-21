@@ -21,8 +21,7 @@ export default function ThirdStep() {
     formValues,
     handleChange,
     handleBack,
-    // handleSubmit,
-    handleNext,
+    handleSubmit,
     variant,
     margin
   } = useContext(AppContext);
@@ -154,7 +153,7 @@ export default function ThirdStep() {
           variant="contained"
           disabled={isError()}
           color="primary"
-          onClick={!isError() ? handleNext : () => null}
+          onClick={!isError() ? handleSubmit : () => null}
         >
           Submit
         </Button>
