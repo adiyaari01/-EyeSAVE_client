@@ -12,6 +12,8 @@ import Children from "./pages/Children";
 import Staff from "./pages/Staff";
 import Events from "./pages/Events";
 import ChildRegistrationForm from "./pages/ChildRegistrationForm";
+import WatchLive from "./pages/WatchLive";
+
 
 export default () => {
   const isLoggedIn = useRecoilValue(IsLoggedInState);
@@ -27,6 +29,7 @@ export default () => {
               <Route path="/children" element={<Children />} />
               <Route path="/staff" element={<Staff />} />
               <Route path="/events" element={<Events />} />
+              <Route path="/watchLive" element={<WatchLive />} />
             </Route>
           </>
         ) : (

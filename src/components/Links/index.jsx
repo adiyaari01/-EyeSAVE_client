@@ -8,7 +8,6 @@ import PlayIcon from "@mui/icons-material/PlayCircleFilledWhiteOutlined";
 import MessageIcon from '@mui/icons-material/MailOutline';
 import StaffIcon from '@mui/icons-material/PeopleOutlineOutlined';
 import ChildrenIcon from '@mui/icons-material/ChildCareOutlined';
-import FormsIcon from '@mui/icons-material/DescriptionOutlined';
 import AttendanceIcon from '@mui/icons-material/AssignmentTurnedInOutlined';
 import LogoutIcon from '@mui/icons-material/Logout';
 import EventsIcon from '@mui/icons-material/TheaterComedy';
@@ -37,8 +36,8 @@ export default () => {
     }
 
     return <List sx={{width: '100%', maxWidth: 360}}>
-        <NavLinkItem to="home" label="Home" Icon={HomeIcon}/>
-        <NavLinkItem to="live" label="Live" Icon={PlayIcon}/>
+        <NavLinkItem to="/" label="Home" Icon={HomeIcon}/>
+        <NavLinkItem to="watchLive" label="Live" Icon={PlayIcon}/>
         <NavLinkItem to="recordings" label="Recordings" Icon={PauseIcon}/>
         {/* <NavLinkItem to="forms" label="Forms" Icon={FormsIcon}/> */}
         <NavLinkItem to="messages" label="Messages" Icon={MessageIcon}/>
