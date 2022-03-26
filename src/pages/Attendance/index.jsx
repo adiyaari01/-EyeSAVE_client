@@ -67,18 +67,17 @@ export default () => {
   console.log("unknow", unknow);
   console.log("absance", absance);
 
+  const items = [...unknow, ...absance, ...lates, ...arrived]
+
   return (
     <Container>
       <Stack
-        justifyContent={"center"}
         direction={"row"}
         flexWrap="wrap"
         gap={3}
       >
-        <List items={arrived} />
-        <List items={lates} />
-        <List items={unknow} />
-        <List items={absance} />
+        <List items={items}/>
+
       </Stack>
     </Container>
   );

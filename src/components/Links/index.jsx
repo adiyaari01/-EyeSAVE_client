@@ -40,7 +40,7 @@ export default () => {
         <NavLinkItem to="home" label="Home" Icon={HomeIcon}/>
         <NavLinkItem to="live" label="Live" Icon={PlayIcon}/>
         <NavLinkItem to="recordings" label="Recordings" Icon={PauseIcon}/>
-        <NavLinkItem to="forms" label="Forms" Icon={FormsIcon}/>
+        {/* <NavLinkItem to="forms" label="Forms" Icon={FormsIcon}/> */}
         <NavLinkItem to="messages" label="Messages" Icon={MessageIcon}/>
         <NavLinkItem to="attendance" label="Attendance" Icon={AttendanceIcon}/>
         <NavLinkItem to="children" label="ChildrenInfo" Icon={ChildrenIcon}/>

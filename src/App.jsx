@@ -1,5 +1,5 @@
 import { Suspense } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 import { IsLoggedInState } from "./state/atoms";
 import Layout from "./Layout";
@@ -21,7 +21,7 @@ export default () => {
         {isLoggedIn ? (
           <>
             <Route path="/" element={<Layout />}>
-              <Route path="/home" element={<Home />} />
+              <Route index element={<Home />} />
               <Route path="/kindergarten" element={<Kindergarten />} />
               <Route path="/attendance" element={<Attendance />} />
               <Route path="/children" element={<Children />} />
@@ -34,6 +34,7 @@ export default () => {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/childForm/:kindergartenId" element={<ChildRegistrationForm />} />
+            <Route path="/" element={<Navigate to="/login" />}/>
           </>
         )}
       </Routes>

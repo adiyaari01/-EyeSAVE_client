@@ -26,7 +26,7 @@ const Login = () => {
   const handleLogin = () => {
     // TODO: auth with server side
     setLoggedIn(true);
-    navigate("/home")
+    navigate("/")
   }
   return (
     <div>

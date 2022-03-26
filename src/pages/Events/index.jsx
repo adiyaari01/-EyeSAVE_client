@@ -1,6 +1,8 @@
-import { Container, Stack } from "@mui/material";
+import { Container, Stack, Table } from "@mui/material";
 import { useRecoilValue } from "recoil";
 import { childrenInfoState, eventsState } from "../../state/atoms";
+import { useEffect } from "react";
+import EnhancedTable from "./Table"
 
 const getCurrentDate = () => {
   let date_ob = new Date();
@@ -18,31 +20,34 @@ export default () => {
   const events = useRecoilValue(eventsState);
   const allChildren = useRecoilValue(childrenInfoState);
   
-  const todayEvents = events.filter(
-    (event) => event._date === getCurrentDate()
-  );
+  useEffect(() => {
+    const todayEvents = events.filter(
+      (event) => event._date === getCurrentDate()
+    );
 
-  const positiveInteractions = events.filter(
-    (event) => event._eventType === 'Positive'
-  );
+    const positiveInteractions = events.filter(
+      (event) => event._eventType === 'Positive'
+    );
 
-  const positiveToday = todayEvents.filter(
-    (todayEvents) => todayEvents._eventType === 'Positive'
-  );
+    const positiveToday = todayEvents.filter(
+      (todayEvents) => todayEvents._eventType === 'Positive'
+    );
 
-  const negativeInteractions = events.filter(
-    (event) => event._eventType === 'Negative'
-  );
-  const negativeToday = events.filter(
-    (negativeToday) => negativeToday._eventType === 'Negative'
-  );
+    const negativeInteractions = events.filter(
+      (event) => event._eventType === 'Negative'
+    );
+    const negativeToday = events.filter(
+      (negativeToday) => negativeToday._eventType === 'Negative'
+    );
 
-  console.log(events);
-  console.log(allChildren);
-  console.log("positive: ", positiveInteractions);
-  console.log("positive roday: ", positiveInteractions);
-  console.log("negative: ", negativeInteractions);
-  console.log("negative today: ", negativeInteractions);
+    console.log(events);
+    console.log(allChildren);
+    console.log("positive: ", positiveInteractions);
+    console.log("positive roday: ", positiveInteractions);
+    console.log("negative: ", negativeInteractions);
+    console.log("negative today: ", negativeInteractions);
+  },[]);
+
 
   // const chldrenWithReports = allChildren.map((child) => {
   //   const attendance = todayReports.find((r) => r._childId === child._id);
@@ -81,20 +86,12 @@ export default () => {
   // console.log("unknow", unknow);
   // console.log("absance", absance);
 
+  if (!events){
+    return <div>Loding..</div>
+  }
   return (
     <Container>
-      {/* <Stack
-        justifyContent={"center"}
-        direction={"row"}
-        flexWrap="wrap"
-        gap={3}
-      >
-        <List items={arrived} />
-        <List items={lates} />
-        <List items={unknow} />
-        <List items={absance} />
-      </Stack> */}
-      Events Page
+        <EnhancedTable events={events} children={allChildren} />
     </Container>
   );
   //   return <div> <Container>{JSON.stringify(childrenAttendance)}

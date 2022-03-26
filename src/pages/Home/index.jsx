@@ -10,13 +10,11 @@ import ChildrenIcon from "@mui/icons-material/ChildCareOutlined";
 import FormsIcon from '@mui/icons-material/DescriptionOutlined';
 import Grid from "@mui/material/Grid";
 import { CardUseStyles } from "./GridUseStyles";
-
-
-
-
+import {useNavigate} from 'react-router-dom'
 
 export default memo(() => {
   const cardClasses = CardUseStyles()
+  const navigate = useNavigate(); 
   return (
     <>
       <Grid container spacing={2} justifyContent="center" mb={2} >
@@ -55,7 +53,7 @@ export default memo(() => {
           </Card>
         </Grid>
         <Grid item xs={10} sm={2.5} md={2.5}>
-          <Card align="center" classes={cardClasses}>
+          <Card align="center" classes={cardClasses} onClick={() => navigate("/staff")}>
             <CardHeader title="Staff info"/>
             <CardContent>
               <StaffIcon sx={{ fontSize: "100px" }} />

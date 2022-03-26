@@ -23,7 +23,7 @@ const initializeEventsState = ({setSelf, onSet}) => {
 
 export const IsLoggedInState = atom({
     key: "IsLoggedInState",
-    default: true //TODO: change to false
+    default: false //TODO: change to false
 })
 
 export const childrenAttendanceState = atom({

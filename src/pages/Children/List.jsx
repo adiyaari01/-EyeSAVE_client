@@ -7,7 +7,7 @@ export function List(props) {
         // const exists
         return (
           <Card key={children._id} sx={{ width: 280, height: 200, backgroundColor: "#3F424C !important",
-          borderRadius : "5px !important", boxShadow: 3}} >
+          borderRadius : "5px !important", color:'#E3E3E3', boxShadow: 3}} >
             <Stack alignItems={'center'} gap={1} p={2}>
               <img
                 src={children._imageUrl}
@@ -16,7 +16,7 @@ export function List(props) {
                 style={{ borderRadius: "50%" }}
                 alt=""
               />
-              <Typography>{children._firstName} {children._lastName}</Typography>
+              <Typography >{children._firstName} {children._lastName}</Typography>
               <Typography>Address:{children._address}</Typography>
               <Typography>Birthday: {children._birthdate}</Typography>
               
