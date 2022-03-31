@@ -1,32 +1,19 @@
-import React, {useRef, useEffect, useState} from "react";
-import { Container } from "@mui/material";
+import { Stack } from "@mui/material";
 
 export default () => {
-  const videoRef = useRef(null)
-  const getVideo = () => {
-    navigator.mediaDevices.
-    getUserMedia({
-      video: {
-        width: 500, 
-        height: 300}
-      })
-      .then(stream => {
-        let video = videoRef.current;
-        video.srcObject = stream;
-        video.play();
-      })
-      .catch(err => {
-        console.error(err);
-      })
-  }
-
-  useEffect(() =>{
-    getVideo();
-  }, [videoRef]);
-
   return (
-    <Container>
-        <video ref={videoRef}></video>
-    </Container>
+    
+    <Stack
+      direction={"row"}
+      flexWrap="wrap"
+      gap={3}
+      >
+        {/* <video ref={videoRef}></video> */}
+        <iframe width="400" height="240" src="https://rtsp.me/embed/7b9h8NSn/" frameBorder="0" allowFullScreen></iframe>
+        <iframe width="400" height="240" src="https://rtsp.me/embed/7b9h8NSn/" frameBorder="0" allowFullScreen></iframe>
+        <iframe width="400" height="240" src="https://rtsp.me/embed/7b9h8NSn/" frameBorder="0" allowFullScreen></iframe>
+        <iframe width="400" height="240" src="https://rtsp.me/embed/7b9h8NSn/" frameBorder="0" allowFullScreen></iframe>
+        {/* <img name="main" id="main" border="0" width="640" height="480" src="rtsp://tapocamnum1:Ss321352387@176.229.235.86:554/stream1"/> */}
+    </Stack>
   );
 };

@@ -17,8 +17,6 @@ const getCurrentDate = () => {
 };
 
 export default () => {
-  /* TODO: react-query vs axios */
-  // if axios we should use effect of react
   const childrenAttendance = useRecoilValue(childrenAttendanceState);
   const allChildren = useRecoilValue(childrenInfoState);
   const staffAttendance = useRecoilValue(staffAttendanceState);

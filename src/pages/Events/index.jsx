@@ -1,8 +1,8 @@
-import { Container, Stack, Table } from "@mui/material";
+import { Container, Typography } from "@mui/material";
 import { useRecoilValue } from "recoil";
 import { childrenInfoState, eventsState } from "../../state/atoms";
-import { useEffect } from "react";
-import EnhancedTable from "./Table"
+import { useEffect, useState } from "react";
+import EnhancedTable from "./Table";
 
 const getCurrentDate = () => {
   let date_ob = new Date();
@@ -17,84 +17,81 @@ const getCurrentDate = () => {
 };
 
 export default () => {
-  const events = useRecoilValue(eventsState);
+  const eventsReports = useRecoilValue(eventsState);
   const allChildren = useRecoilValue(childrenInfoState);
-  
+  const [events, setEvents] = useState(eventsReports);
+  const [todayEvents, setTodayEvents] = useState([]);
+  const [positiveEvents, setPositive] = useState([]);
+  const [positiveToday, setPositiveToday] = useState([]);
+  const [negativeEvents, setNegative] = useState([]);
+  const [negativeToday, setNegativeToday] = useState([]);
   useEffect(() => {
-    const todayEvents = events.filter(
+    const todayEventsLocal = eventsReports.filter(
       (event) => event._date === getCurrentDate()
     );
+    setTodayEvents(todayEventsLocal);
 
-    const positiveInteractions = events.filter(
-      (event) => event._eventType === 'Positive'
+    const positiveInteractions = eventsReports.filter(
+      (event) => event._eventType === "Positive"
     );
+    setPositive(positiveInteractions);
 
     const positiveToday = todayEvents.filter(
-      (todayEvents) => todayEvents._eventType === 'Positive'
+      (todayEvents) => todayEvents._eventType === "Positive"
     );
+    setPositiveToday(positiveToday);
 
-    const negativeInteractions = events.filter(
-      (event) => event._eventType === 'Negative'
+    const negativeInteractions = eventsReports.filter(
+      (event) => event._eventType === "Negative"
     );
-    const negativeToday = events.filter(
-      (negativeToday) => negativeToday._eventType === 'Negative'
+    setNegative(negativeInteractions)
+    
+    const negativeTodayLocal = todayEvents.filter(
+      (negativeToday) => negativeToday._eventType === "Negative"
     );
-
-    console.log(events);
-    console.log(allChildren);
-    console.log("positive: ", positiveInteractions);
-    console.log("positive roday: ", positiveInteractions);
-    console.log("negative: ", negativeInteractions);
-    console.log("negative today: ", negativeInteractions);
-  },[]);
+    setNegativeToday(negativeTodayLocal)
 
 
-  // const chldrenWithReports = allChildren.map((child) => {
-  //   const attendance = todayReports.find((r) => r._childId === child._id);
-  //   return { ...child, report: attendance };
-  // });
+  }, [events]);
 
-  // const arrived = chldrenWithReports.filter(
-  //   (child) => child.report?._arrivalTime
-  // );
-
-  // const lates = chldrenWithReports.filter(
-  //   (child) => child.report?._childDelay === true && !child.report?._arrivalTime
-  // );
-
-  // const absance = allChildren.filter((child) =>
-  //   childrenAttendance.find((attendance) => {
-  //     const currentChild = attendance._childId === child._id;
-  //     const today = attendance._date === getCurrentDate();
-  //     const absance = attendance._absence && !attendance._arrivalTime;
-  //     return currentChild && today && absance;
-  //   })
-  // );
-
-  // const unknow = allChildren.filter((child) => {
-  //   const todayAttendace = childrenAttendance.filter((attendance) => {
-  //     const today = attendance._date === getCurrentDate();
-  //     return today;
-  //   });
-  //   return !todayAttendace.find(
-  //     (attendance) => attendance._childId == child._id
-  //   );
-  // });
-
-  // console.log("arrivedItems", arrived);
-  // console.log("lates", lates);
-  // console.log("unknow", unknow);
-  // console.log("absance", absance);
-
-  if (!events){
-    return <div>Loding..</div>
+  const handleFilter = (value) => {
+    switch (value) {
+      case "all":
+        setEvents(eventsReports);
+        break;
+      case "today":
+        setEvents(todayEvents);
+        break;
+      case "positive":
+        setEvents(positiveEvents);
+        break;
+        case "positiveToday":
+          setEvents(positiveToday);
+          break;        
+      case "negative":
+          setEvents(negativeEvents);
+          break;
+      case "negativeToday":
+          setEvents(negativeToday);
+          break;
+      default:
+        break;
+    }
+  };
+  if (!events) {
+    return <div>Loding..</div>;
   }
   return (
     <Container>
-        <EnhancedTable events={events} children={allChildren} />
+      <Typography>Events</Typography>
+      <button onClick ={()=>{handleFilter("all")}}>All Events</button>
+      <button onClick ={()=>{handleFilter("today")}}>Today Events</button>
+      <button onClick ={()=>{handleFilter("negative")}}>All Negative</button>
+      <button onClick ={()=>{handleFilter("negativeToday")}}>Negative Today</button>
+      <button onClick ={()=>{handleFilter("positive")}}>All Positive</button>
+      <button onClick ={()=>{handleFilter("positiveToday")}}>Positive Today</button>
+      <button>By Child</button>
+      <EnhancedTable events={events} children={allChildren} />
     </Container>
   );
-  //   return <div> <Container>{JSON.stringify(childrenAttendance)}
-  //       {JSON.stringify(staffAttendance)}
-  //       </Container></div>
 };

@@ -11,7 +11,6 @@ export default () => {
   return (
     <Container>
       <Stack
-        justifyContent={"center"}
         direction={"row"}
         flexWrap="wrap"
         gap={3}
