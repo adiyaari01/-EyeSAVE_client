@@ -1,21 +1,14 @@
 import * as React from "react";
 import PropTypes from "prop-types";
 import { alpha } from "@mui/material/styles";
-import Box from "@mui/material/Box";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
-import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
-import TableSortLabel from "@mui/material/TableSortLabel";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import Paper from "@mui/material/Paper";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Switch from "@mui/material/Switch";
-import { visuallyHidden } from "@mui/utils";
 import { useEffect } from "react";
 
 function createData(date, event, startTime, finishTime, child1, child2) {
@@ -86,12 +79,9 @@ function EnhancedTableHead(props) {
     orderBy,
     onRequestSort,
   } = props;
-  const createSortHandler = (property) => (event) => {
-    onRequestSort(event, property);
-  };
 
   return (
-    <TableHead className="tableStyle">
+    <TableHead>
       <TableRow>
         {headCells.map((headCell) => (
           <TableCell
@@ -99,19 +89,8 @@ function EnhancedTableHead(props) {
             align={"center"}
             padding={headCell.disablePadding ? "none" : "normal"}
             sortDirection={orderBy === headCell.id ? order : false}
-          >
-            <TableSortLabel
-              active={orderBy === headCell.id}
-              direction={orderBy === headCell.id ? order : "asc"}
-              onClick={createSortHandler(headCell.id)}
-            >
-              {headCell.label}
-              {orderBy === headCell.id ? (
-                <Box component="span" sx={visuallyHidden}>
-                  {order === "desc" ? "sorted descending" : "sorted ascending"}
-                </Box>
-              ) : null}
-            </TableSortLabel>
+            sx={{color:"#A2A4A7", fontSize:"16px"}}
+          >{headCell.label}
           </TableCell>
         ))}
       </TableRow>
@@ -187,11 +166,12 @@ export default function EnhancedTable({ events, children }) {
       const data = events.map((event) => {
         const child1 = children.filter((c) => c._id === event._child1);
         const child2 = children.filter((c) => c._id === event._child2);
+        console.log("childe1:", child1);
         if (child1) {
-          var childName1 = child1[0]._firstName + " " + child1[0]._lastName;
+          var childName1 = child1[0]?._firstName + " " + child1[0]?._lastName;
         }
         if (child2) {
-          var childName2 = child2[0]._firstName + " " + child2[0]._lastName;
+          var childName2 = child2[0]?._firstName + " " + child2[0]?._lastName;
         }
         const test = createData(
           event._date,
@@ -247,19 +227,6 @@ export default function EnhancedTable({ events, children }) {
     setSelected(newSelected);
   };
 
-  const handleChangePage = (event, newPage) => {
-    setPage(newPage);
-  };
-
-  const handleChangeRowsPerPage = (event) => {
-    setRowsPerPage(parseInt(event.target.value, 10));
-    setPage(0);
-  };
-
-  const handleChangeDense = (event) => {
-    setDense(event.target.checked);
-  };
-
   const isSelected = (name) => selected.indexOf(name) !== -1;
 
   // Avoid a layout jump when reaching the last page with empty rows.
@@ -268,12 +235,10 @@ export default function EnhancedTable({ events, children }) {
 
   if (!rows.length) return <div>Loading..</div>;
   return (
-    <Box sx={{ width: "100%" }}>
-      <Paper sx={{ width: "100%", mb: 2 }}>
-        <EnhancedTableToolbar numSelected={selected.length} />
-        <TableContainer>
+    <div>
+        <TableContainer sx={{ mt: 5 }}>
           <Table
-            sx={{ minWidth: 750 }}
+            sx={{ minWidth: 750, backgroundColor:"#3F414D"}}
             aria-labelledby="tableTitle"
             size={dense ? "small" : "medium"}
           >
@@ -288,10 +253,9 @@ export default function EnhancedTable({ events, children }) {
             <TableBody>
               {rows.map((row, index) => {
                 const isItemSelected = isSelected(row.event);
-                const labelId = `enhanced-table-checkbox-${index}`;
 
                 return (
-                  <TableRow
+                  <TableRow 
                     hover
                     onClick={(event) => handleClick(event, row.event)}
                     aria-checked={isItemSelected}
@@ -299,12 +263,13 @@ export default function EnhancedTable({ events, children }) {
                     key={index}
                     selected={isItemSelected}
                   >
-                    <TableCell align="center">{row.event}</TableCell>
-                    <TableCell align="center">{row.date}</TableCell>
-                    <TableCell align="center">{row.startTime}</TableCell>
-                    <TableCell align="center">{row.finishTime}</TableCell>
-                    <TableCell align="center">{row.child1}</TableCell>
-                    <TableCell align="center">{row.child2}</TableCell>
+                    
+                    <TableCell sx={{fontSize:"16px", color:row.event==="Positive"?"#68B294":row.event==="Negative"?"#AD4675":"#A2A4A7"}} align="center">{row.event}</TableCell>
+                    <TableCell sx={{fontSize:"16px", color:"#A2A4A7"}} align="center">{row.date}</TableCell>
+                    <TableCell sx={{fontSize:"16px", color:"#A2A4A7"}} align="center">{row.startTime}</TableCell>
+                    <TableCell sx={{fontSize:"16px", color:"#A2A4A7"}} align="center">{row.finishTime}</TableCell>
+                    <TableCell sx={{fontSize:"16px", color:"#A2A4A7"}} align="center">{row.child1}</TableCell>
+                    <TableCell sx={{fontSize:"16px", color:"#A2A4A7"}} align="center">{row.child2}</TableCell>
                   </TableRow>
                 );
               })}
@@ -320,20 +285,6 @@ export default function EnhancedTable({ events, children }) {
             </TableBody>
           </Table>
         </TableContainer>
-        <TablePagination
-          rowsPerPageOptions={[5, 10, 25]}
-          component="div"
-          count={rows.length}
-          rowsPerPage={rowsPerPage}
-          page={page}
-          onPageChange={handleChangePage}
-          onRowsPerPageChange={handleChangeRowsPerPage}
-        />
-      </Paper>
-      <FormControlLabel
-        control={<Switch checked={dense} onChange={handleChangeDense} />}
-        label="Dense padding"
-      />
-    </Box>
+    </div>
   );
 }
