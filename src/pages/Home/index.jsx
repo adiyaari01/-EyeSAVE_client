@@ -19,7 +19,7 @@ export default memo(() => {
     <>
       <Grid container spacing={2} justifyContent="center" mb={2} >
         <Grid item xs={10} sm={4} md={4}>
-          <Card align="center" classes={cardClasses} >
+          <Card align="center" classes={cardClasses} onClick={() => navigate("/watchLive")}>
             <CardHeader title="Watch LIVE" />
             <CardContent>
               <PlayIcon sx={{ fontSize: "100px" }} />
@@ -27,7 +27,7 @@ export default memo(() => {
           </Card>
         </Grid>
         <Grid item xs={10} sm={4} md={4}>
-          <Card align="center" classes={cardClasses}>
+          <Card align="center" classes={cardClasses} onClick={() => navigate("/recirdings")}>
             <CardHeader title="See recordings"/>
             <CardContent>
               <PauseIcon sx={{ fontSize: "100px" }} />
@@ -37,7 +37,7 @@ export default memo(() => {
       </Grid>
       <Grid container spacing={2} justifyContent="center" mt={2}>
       <Grid item xs={10} sm={2.5} md={2.5}>
-          <Card align="center" classes={cardClasses}>
+          <Card align="center" classes={cardClasses} onClick={() => navigate("/Forms")}>
             <CardHeader title="Forms"/>
             <CardContent>
               <FormsIcon sx={{ fontSize: "100px" }} />
@@ -45,7 +45,7 @@ export default memo(() => {
           </Card>
         </Grid>
         <Grid item xs={10} sm={2.5} md={2.5}>
-          <Card align="center" classes={cardClasses}>
+          <Card align="center" classes={cardClasses} onClick={() => navigate("/Messages")}>
             <CardHeader title="Messages" />
             <CardContent>
               <MessageIcon sx={{ fontSize: "100px"}} />
@@ -61,7 +61,7 @@ export default memo(() => {
           </Card>
         </Grid>
         <Grid item xs={10} sm={2.5} md={2.5}>
-          <Card align="center" classes={cardClasses}>
+          <Card align="center" classes={cardClasses} onClick={() => navigate("/children")}>
             <CardHeader title="Children info"/>
             <CardContent>
               <ChildrenIcon sx={{ fontSize: "100px" }} />

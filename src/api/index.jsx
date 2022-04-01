@@ -1,6 +1,7 @@
 import * as superagent from "superagent"
 
-const BASE_URL = "http://localhost:8000";
+const BASE_URL =
+  process.env.NODE_ENV === "production" ? "https://eyesaveserver.herokuapp.com" : "http://localhost:8000";
 
 export const getChildrenAttendance = async () => {
     const { body } = await superagent.get(`${BASE_URL}/childrenAttendance`)
@@ -28,3 +29,5 @@ export const getEvents = async () => {
 }; 
 
 export const postStaff = (newStaff) => superagent.post(`${BASE_URL}/staff`).send(newStaff);
+export const postChild = (newChild) => superagent.post(`${BASE_URL}/children`).send(newChild);
+export const postEscort = (newEscort) => superagent.post(`${BASE_URL}/children`).send(newEscort);

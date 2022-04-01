@@ -2,11 +2,10 @@ import { Card, Stack, Typography } from "@mui/material";
 
 export function List(props) {
   return (
-    <Stack justifyContent={"center"} direction={"row"} flexWrap="wrap" gap={3}>
+    <Stack justifyContent={"left"} direction={"row"} flexWrap="wrap" gap={3}>
       {props.items.map((children) => {
-        // const exists
         return (
-          <Card key={children._id} sx={{ width: 280, height: 200, backgroundColor: "#3F424C !important",
+          <Card key={children._id} sx={{ width: 270, height: 200, backgroundColor: "#3F424C !important",
           borderRadius : "5px !important", color:'#E3E3E3', boxShadow: 3}} >
             <Stack alignItems={'center'} gap={1} p={2}>
               <img

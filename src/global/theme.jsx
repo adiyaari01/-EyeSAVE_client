@@ -23,7 +23,4 @@ export default {
         }
 
     },
-    // sizes:{ large:{height: "", width:""}, medium:{height: "", width:""}, small:{height: "", width:""} }
-
-    // image:{ large:{height: "", width:""}, medium:{height: "", width:""}, small:{height: "", width:""} }
 }

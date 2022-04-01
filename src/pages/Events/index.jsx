@@ -4,6 +4,12 @@ import { childrenInfoState, eventsState } from "../../state/atoms";
 import { useEffect, useState } from "react";
 import EnhancedTable from "./Table";
 
+import Box from "@mui/material/Box";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
+
 const getCurrentDate = () => {
   let date_ob = new Date();
   // adjust 0 before single digit date
@@ -25,6 +31,8 @@ export default () => {
   const [positiveToday, setPositiveToday] = useState([]);
   const [negativeEvents, setNegative] = useState([]);
   const [negativeToday, setNegativeToday] = useState([]);
+  const [selectValue, setSelectValue] = useState("all");
+
   useEffect(() => {
     const todayEventsLocal = eventsReports.filter(
       (event) => event._date === getCurrentDate()
@@ -44,17 +52,20 @@ export default () => {
     const negativeInteractions = eventsReports.filter(
       (event) => event._eventType === "Negative"
     );
-    setNegative(negativeInteractions)
-    
+    setNegative(negativeInteractions);
+
     const negativeTodayLocal = todayEvents.filter(
       (negativeToday) => negativeToday._eventType === "Negative"
     );
-    setNegativeToday(negativeTodayLocal)
-
-
+    setNegativeToday(negativeTodayLocal);
   }, [events]);
 
+  const handleChange = (event) => {
+    handleFilter(event.target.value);
+  };
+
   const handleFilter = (value) => {
+    setSelectValue(value);
     switch (value) {
       case "all":
         setEvents(eventsReports);
@@ -65,15 +76,15 @@ export default () => {
       case "positive":
         setEvents(positiveEvents);
         break;
-        case "positiveToday":
-          setEvents(positiveToday);
-          break;        
+      case "positiveToday":
+        setEvents(positiveToday);
+        break;
       case "negative":
-          setEvents(negativeEvents);
-          break;
+        setEvents(negativeEvents);
+        break;
       case "negativeToday":
-          setEvents(negativeToday);
-          break;
+        setEvents(negativeToday);
+        break;
       default:
         break;
     }
@@ -83,14 +94,35 @@ export default () => {
   }
   return (
     <Container>
-      <Typography>Events</Typography>
-      <button onClick ={()=>{handleFilter("all")}}>All Events</button>
-      <button onClick ={()=>{handleFilter("today")}}>Today Events</button>
-      <button onClick ={()=>{handleFilter("negative")}}>All Negative</button>
-      <button onClick ={()=>{handleFilter("negativeToday")}}>Negative Today</button>
-      <button onClick ={()=>{handleFilter("positive")}}>All Positive</button>
-      <button onClick ={()=>{handleFilter("positiveToday")}}>Positive Today</button>
-      <button>By Child</button>
+      <Typography sx={{ fontSize: "25px", color: "#A2A4A7" }}>
+        Events
+      </Typography>
+      <Box sx={{ minWidth: 120 }}>
+        <FormControl>
+          <Select
+            labelId="demo-simple-select-label"
+            id="demo-simple-select"
+            value={selectValue}
+            onChange={handleChange}
+            sx={{
+              color: "#3F414D",
+              backgroundColor: "#E2E3E4",
+              width: "100%",
+              minWidth: "150px",
+              height:"30px",
+            }}
+
+          >
+            <MenuItem value={"all"}>All</MenuItem>
+            <MenuItem value={"today"}>Today</MenuItem>
+            <MenuItem value={"negative"}>Negative</MenuItem>
+            <MenuItem value={"negativeToday"}>Negative Today</MenuItem>
+            <MenuItem value={"positive"}>Positive</MenuItem>
+            <MenuItem value={"positiveToday"}>Positive Today</MenuItem>
+          </Select>
+        </FormControl>
+      </Box>
+
       <EnhancedTable events={events} children={allChildren} />
     </Container>
   );
