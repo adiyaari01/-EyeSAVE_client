@@ -28,6 +28,6 @@ export const getEvents = async () => {
     return body;
 }; 
 
-export const postStaff = (newStaff) => superagent.post(`${BASE_URL}/staff`).send(newStaff);
-export const postChild = (newChild) => superagent.post(`${BASE_URL}/children`).send(newChild);
-export const postEscort = (newEscort) => superagent.post(`${BASE_URL}/children`).send(newEscort);
+export const postStaff = async (newStaff) => await superagent.post(`${BASE_URL}/staff`).send(newStaff);
+export const postChild = async (newChild) => await superagent.post(`${BASE_URL}/children`).send(newChild);
+export const postEscort = async (newEscort) => await superagent.post(`${BASE_URL}/escorts`).send(newEscort);

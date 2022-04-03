@@ -1,15 +1,167 @@
+import * as React from "react";
 import { Container, Stack } from "@mui/material";
 import { useRecoilValue } from "recoil";
 import { staffInfoState } from "../../state/atoms";
 import { List } from "./List";
+import AddIcon from "@mui/icons-material/AddCircleOutline";
+import {postStaff} from "../../api"
+import {
+  MenuItem,
+  Select,
+  FormControl,
+  Box,
+  Avatar,
+  TextField,
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
+} from "@mui/material";
+
+
 
 export default () => {
-  /* TODO: react-query vs axios */
-  // if axios we should use effect of react
+  const [open, setOpen] = React.useState(false);
+  const [employeeFirstName, setEmployeeFirstName] = React.useState("");
+  const [employeeLastName, setEmployeeLastName] = React.useState("");
+  const [employeePhoneNumber, setEmployeePhoneNumber] = React.useState(0);
+  const [employeeId, setEmployeeId] = React.useState(0);
+  const [selectedPosition, setPosition] = React.useState("");
+
   const staff = useRecoilValue(staffInfoState);
-  console.log("staff", staff);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const hadleDialog = (event) => {
+    setPosition(event.target.value);
+  }
+
+  const handleSubmit = async () => {
+    const employee = {
+      _firstName: employeeFirstName,
+      _lastName: employeeLastName,
+      _id: parseInt(employeeId),
+      _phone: employeePhoneNumber,
+      _position: selectedPosition,
+    };
+    await postStaff(employee);
+    handleClose();
+  };
+
+  const avaterStyle = {
+    backgroundColor: "#BC88C9",
+  };
+
   return (
     <Container>
+      <Button
+        sx={{
+          color: "#BC88C9",
+          display: "flex",
+          justifyContent: "center",
+          width: "100%",
+        }}
+        onClick={handleClickOpen}
+      >
+        <Avatar style={avaterStyle}>
+          <AddIcon />
+        </Avatar>
+      </Button>
+
+      <Dialog open={open} onClose={handleClose}>
+        <DialogTitle>Employee Details</DialogTitle>
+        <DialogContent>
+          <form>
+            <TextField
+              onChange={() => {
+                setEmployeeFirstName(event.target.value);
+              }}
+              fullWidth
+              id="standard-basic"
+
+              name="cmployeeFirstName"
+              label="Employee First Name"
+              variant="standard"
+              placeholder="Enter employee first name"
+              type={"text"}
+            />
+            <TextField
+              onChange={() => {
+                setEmployeeLastName(event.target.value);
+              }}
+              fullWidth
+              id="standard-basic"
+              name="cmployeeLastName"
+              label="Employee Last Name"
+              variant="standard"
+              placeholder="Enter employee lasr name"
+              type={"text"}
+            />
+            <TextField
+              fullWidth
+              onChange={() => {
+                setEmployeeId(event.target.value);
+              }}
+              id="standard-basic"
+              name="EmployeeId"
+              label="Employee Id"
+              variant="standard"
+              placeholder="Enter employee Id"
+              type={"number"}
+            />
+            <TextField
+              onChange={() => {
+                setEmployeePhoneNumber(event.target.value);
+              }}
+              fullWidth
+              id="standard-basic"
+              name="phoneNumber"
+              label="Phone Number"
+              variant="standard"
+              placeholder="Enter parent phone number"
+              type={"number"}
+            />
+            <Box sx={{ minWidth: 120, textAlign: "left" }}>
+              <FormControl>
+                <Select
+                  labelId="demo-simple-select-label"
+                  id="demo-simple-select"
+                  value={selectedPosition}
+                  onChange={hadleDialog}
+                  sx={{
+                    color: "#3F414D",
+                    width: "100%",
+                    minWidth: "150px",
+                    height: "30px",
+                    mt:"20px"
+                  }}
+                >
+                  <MenuItem value={"Teacher"}>Teacher</MenuItem>
+                  <MenuItem value={"Assistant"}>Assistant</MenuItem>
+                  <MenuItem value={"House keeper"}>House keeper</MenuItem>
+                  <MenuItem value={"Manager"}>Manager</MenuItem>
+                  <MenuItem value={"Other"}>Other</MenuItem>
+                </Select>
+              </FormControl>
+            </Box>
+          </form>
+        </DialogContent>
+        <DialogActions>
+          <Button sx={{ color: "black" }} onClick={handleClose}>
+            Cancel
+          </Button>
+          <Button sx={{ color: "black" }} onClick={handleSubmit}>
+            Submit
+          </Button>
+        </DialogActions>
+      </Dialog>
       <Stack
         justifyContent={"center"}
         direction={"row"}
@@ -19,9 +171,4 @@ export default () => {
       <List items={staff} />
     </Container>
   );
-//   return <div> <Container>{JSON.stringify(childrenAttendance)}
-//       {JSON.stringify(staffAttendance)}
-//       </Container></div>
 };
-
-

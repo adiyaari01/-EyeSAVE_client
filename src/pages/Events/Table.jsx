@@ -77,7 +77,6 @@ function EnhancedTableHead(props) {
   const {
     order,
     orderBy,
-    onRequestSort,
   } = props;
 
   return (
@@ -160,13 +159,13 @@ export default function EnhancedTable({ events, children }) {
   const [rows, setRows] = React.useState([]);
 
   useEffect(() => {
-    console.log("Events", events);
+    // console.log("Events", events); TODO: delete
     let isMount = true;
     if (isMount) {
       const data = events.map((event) => {
         const child1 = children.filter((c) => c._id === event._child1);
         const child2 = children.filter((c) => c._id === event._child2);
-        console.log("childe1:", child1);
+        // console.log("childe1:", child1); TODO: delete
         if (child1) {
           var childName1 = child1[0]?._firstName + " " + child1[0]?._lastName;
         }

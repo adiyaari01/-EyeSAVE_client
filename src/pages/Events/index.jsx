@@ -97,7 +97,7 @@ export default () => {
       <Typography sx={{ fontSize: "25px", color: "#A2A4A7" }}>
         Events
       </Typography>
-      <Box sx={{ minWidth: 120 }}>
+      <Box sx={{ minWidth: 120, textAlign: "right"}}>
         <FormControl>
           <Select
             labelId="demo-simple-select-label"
