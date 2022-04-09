@@ -1,7 +1,9 @@
 import * as superagent from "superagent"
 
 const BASE_URL =
-  process.env.NODE_ENV === "production" ? "https://eyesaveserver.herokuapp.com" : "http://localhost:8000";
+//   process.env.NODE_ENV === "production" ? "https://eyesaveserver.herokuapp.com" : "http://localhost:8000";
+  process.env.NODE_ENV === "production" ? "https://eyesave.herokuapp.com" : "http://localhost:8000";
+  
 
 export const getChildrenAttendance = async () => {
     const { body } = await superagent.get(`${BASE_URL}/childrenAttendance`)
@@ -15,6 +17,11 @@ export const getStaffAttendance = async () => {
 
 export const getChildren = async () => {
     const { body } = await superagent.get(`${BASE_URL}/children`)
+    return body;
+}; 
+
+export const getEscorts = async () => {
+    const { body } = await superagent.get(`${BASE_URL}/escorts`)
     return body;
 }; 
 

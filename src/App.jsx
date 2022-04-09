@@ -13,6 +13,7 @@ import Staff from "./pages/Staff";
 import Events from "./pages/Events";
 import ChildRegistrationForm from "./pages/ChildRegistrationForm";
 import WatchLive from "./pages/WatchLive";
+import Messages from "./pages/Messages"
 
 export default () => {
   const isLoggedIn = useRecoilValue(IsLoggedInState);
@@ -29,6 +30,7 @@ export default () => {
               <Route path="/staff" element={<Staff />} />
               <Route path="/events" element={<Events />} />
               <Route path="/watchLive" element={<WatchLive />} />
+              <Route path="/messages" element={<Messages />} />
               
             </Route>
           </>

@@ -9,7 +9,7 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import AddIcon from "@mui/icons-material/AddCircleOutline";
 import { Avatar, TextField, Button } from "@mui/material";
-import { postChild, postEscort } from "../../api"
+import { postChild, postEscort } from "../../api";
 
 export default () => {
   const [open, setOpen] = React.useState(false);
@@ -20,7 +20,7 @@ export default () => {
   const [parentPhoneNumber, setParentPhoneNumber] = React.useState(0);
   const [childId, setChildId] = React.useState(0);
   const [parentId, setParentId] = React.useState(0);
-  
+
   const allChildren = useRecoilValue(childrenInfoState);
 
   const handleClickOpen = () => {
@@ -31,32 +31,59 @@ export default () => {
     setOpen(false);
   };
 
-  const handleSubmit = async () =>{
-    const child = {_firstName:childFirstName, _lastName:childLastName, _id:parseInt(childId), _escort:[parseInt(parentId)]}
-    const parent = {_firstName:parentFirstName, _lastName:parentLastName, _id:parseInt(parentId), _phone:parentPhoneNumber, _children:[parseInt(childId)], _relation:"Parent"}
+  const handleSubmit = async () => {
+    const child = {
+      _firstName: childFirstName,
+      _lastName: childLastName,
+      _id: parseInt(childId),
+      _escort: [parseInt(parentId)],
+    };
+    const parent = {
+      _firstName: parentFirstName,
+      _lastName: parentLastName,
+      _id: parseInt(parentId),
+      _phone: parentPhoneNumber,
+      _children: [parseInt(childId)],
+      _relation: "Parent",
+    };
     await postChild(child);
     await postEscort(parent);
     handleClose();
   };
- 
+
   const avaterStyle = {
     backgroundColor: "#BC88C9",
   };
-  
+  const btnStyle = {
+    margin: "8px 0",
+  };
+
   return (
     <Container>
-      <Button sx={{ color: "#BC88C9", display: "flex", justifyContent: "center",width: "100%" }} onClick={handleClickOpen}>
+      <Button
+        sx={{
+          color: "#BC88C9",
+          display: "flex",
+          justifyContent: "center",
+          width: "100%",
+        }}
+        onClick={handleClickOpen}
+      >
         <Avatar style={avaterStyle}>
           <AddIcon />
         </Avatar>
       </Button>
 
       <Dialog open={open} onClose={handleClose}>
-        <DialogTitle>Child and Parent Details</DialogTitle>
-        <DialogContent>
+        <DialogTitle sx={{ background: "#E3E3E3" }}>
+          Child and Parent Details
+        </DialogTitle>
+        <DialogContent sx={{ background: "#E3E3E3" }}>
           <form>
             <TextField
-              onChange={() => {setChildFirstName(event.target.value)}}
+              onChange={() => {
+                setChildFirstName(event.target.value);
+              }}
               fullWidth
               id="standard-basic"
               name="childFirstName"
@@ -66,7 +93,9 @@ export default () => {
               type={"text"}
             />
             <TextField
-              onChange={() => {setChildLastName(event.target.value)}}
+              onChange={() => {
+                setChildLastName(event.target.value);
+              }}
               fullWidth
               id="standard-basic"
               name="childLastName"
@@ -76,7 +105,9 @@ export default () => {
               type={"text"}
             />
             <TextField
-              onChange={() => {setChildId(event.target.value)}}
+              onChange={() => {
+                setChildId(event.target.value);
+              }}
               fullWidth
               id="standard-basic"
               name="childId"
@@ -86,7 +117,9 @@ export default () => {
               type={"number"}
             />
             <TextField
-              onChange={() => {setParentFirstName(event.target.value)}}
+              onChange={() => {
+                setParentFirstName(event.target.value);
+              }}
               fullWidth
               id="standard-basic"
               name="parentFirstName"
@@ -96,7 +129,9 @@ export default () => {
               type={"text"}
             />
             <TextField
-              onChange={() => {setParentLastName(event.target.value)}}
+              onChange={() => {
+                setParentLastName(event.target.value);
+              }}
               fullWidth
               id="standard-basic"
               name="parentLastName"
@@ -106,7 +141,9 @@ export default () => {
               type={"text"}
             />
             <TextField
-              onChange={() => {setParentId(event.target.value)}}
+              onChange={() => {
+                setParentId(event.target.value);
+              }}
               fullWidth
               id="standard-basic"
               name="parentId"
@@ -116,7 +153,9 @@ export default () => {
               type={"number"}
             />
             <TextField
-              onChange={() => {setParentPhoneNumber(event.target.value)}}
+              onChange={() => {
+                setParentPhoneNumber(event.target.value);
+              }}
               fullWidth
               id="standard-basic"
               name="phoneNumber"
@@ -127,9 +166,18 @@ export default () => {
             />
           </form>
         </DialogContent>
-        <DialogActions>
-          <Button onClick={handleClose}>Cancel</Button>
-          <Button onClick={handleSubmit}>Submit</Button>
+        <DialogActions sx={{background: "#E3E3E3" }}>
+          <Button style={{margin: '15px', color: "#3F414D" }} onClick={handleClose}>
+            Cancel
+          </Button>
+          <Button
+            variant="contained"
+            style={btnStyle}
+            color="secondary"
+            onClick={handleSubmit}
+          >
+            SUBMIT
+          </Button>
         </DialogActions>
       </Dialog>
       <Stack direction={"row"} flexWrap="wrap" gap={3}></Stack>

@@ -59,6 +59,10 @@ export default () => {
     backgroundColor: "#BC88C9",
   };
 
+  const btnStyle = {
+    margin: "8px 0",
+  };
+
   return (
     <Container>
       <Button
@@ -76,8 +80,8 @@ export default () => {
       </Button>
 
       <Dialog open={open} onClose={handleClose}>
-        <DialogTitle>Employee Details</DialogTitle>
-        <DialogContent>
+        <DialogTitle sx={{background: "#E3E3E3"}}>Employee Details</DialogTitle>
+        <DialogContent sx={{background: "#E3E3E3"}}>
           <form>
             <TextField
               onChange={() => {
@@ -153,12 +157,17 @@ export default () => {
             </Box>
           </form>
         </DialogContent>
-        <DialogActions>
-          <Button sx={{ color: "black" }} onClick={handleClose}>
+        <DialogActions sx={{background: "#E3E3E3"}}>
+        <Button style={{margin: '15px', color: "#3F414D" }} onClick={handleClose}>
             Cancel
           </Button>
-          <Button sx={{ color: "black" }} onClick={handleSubmit}>
-            Submit
+          <Button
+            variant="contained"
+            style={btnStyle}
+            color="secondary"
+            onClick={handleSubmit}
+          >
+            SUBMIT
           </Button>
         </DialogActions>
       </Dialog>
