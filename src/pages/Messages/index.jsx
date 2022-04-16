@@ -25,8 +25,7 @@ const Messages = () => {
   // filter all parents
   const handleSubmit = async () => {
     console.log("Submit", form);
-    // loop
-
+    //TODO: send to all parents // url: 'https://eyesave-noitfications.herokuapp.com/escort/sendToMany',
     const res = await axios({
       method: "post",
       // url: "http://localhost:8001/escort/send",
