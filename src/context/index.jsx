@@ -1,5 +1,6 @@
 import React, { useState, createContext } from "react";
 import { initialValues } from "./initialize";
+import axios from "axios";
 
 const isText = RegExp(/^[A-Z ]+$/i);
 const isEmail = RegExp(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i);
@@ -87,27 +88,77 @@ const AppProvider = ({ children }) => {
     cloneValues[stateName][name] = {
       ...cloneValues[stateName][name],
       value: fieldValue,
-      error
+      error,
     };
     setFormValues(cloneValues);
   };
 
-  const handleSubmit = () =>{
-    console.log("forms values", formValues)
-    const cloneValues = JSON.parse(JSON.stringify(formValues))
-    for(let i in cloneValues){
-      cloneValues[i] = Object.keys(cloneValues[i]).reduce((total, current) => {
-            total[current] = cloneValues[i][current].value
+  const handleSubmit = async () => {
+    try {
+      console.log("forms values", formValues);
+      const cloneValues = JSON.parse(JSON.stringify(formValues));
+      for (let i in cloneValues) {
+        cloneValues[i] = Object.keys(cloneValues[i]).reduce(
+          (total, current) => {
+            total[current] = cloneValues[i][current].value;
             return total;
-        }, {})
+          },
+          {}
+        );
+      }
+      const { parent, child, escort } = cloneValues;
+
+      console.log("clone", cloneValues);
+      const res = await axios({
+        method: "post",
+        url: "https://eyesave.herokuapp.com/escorts/",
+        data: {
+          _firstName: cloneValues.escort.firstName,
+          _lastName: cloneValues.escort.lastName,
+          _telegramId: "",
+          _address: "",
+          _children: cloneValues.child.id,
+          _birthday: "",
+          _phone: "9987654367",
+          _relation: "Escort",
+          _id: 989810989,
+        },
+      });
+
+      const res1 = await axios({
+        method: "put",
+        url: `https://eyesave.herokuapp.com/escorts/${cloneValues.parent.id}`,
+        data: {
+          _firstName: cloneValues.parent.firstName,
+          _lastName: cloneValues.parent.lastName,
+          _id: cloneValues.parent.id,
+          _address: cloneValues.parent.address,
+          _children: cloneValues.child.id,
+          _birthday: "",
+          _phone: "9987604367",
+          _relation: "Parent",
+        },
+      });
+
+      const res2 = await axios({
+        method: "put",
+        url: `https://eyesave.herokuapp.com/escorts/${cloneValues.child.id}`,
+        data: {
+          _firstName: cloneValues.child.firstName,
+          _lastName: cloneValues.child.lastName,
+          _id: cloneValues.child.id,
+          _address: cloneValues.child.address,
+          _birthday: cloneValues.child.date,
+          _gender: cloneValues.child.gender,
+        },
+      });
+
+      handleNext();
+    } catch (error) {
+        alert("somthing wrong");
+      console.log(error);
     }
-    const { parent, child, escort} = cloneValues;
-
-    console.log("clone", cloneValues)
-
-    // 3 post request
-    // handleNext();
-  }
+  };
   return (
     <AppContext.Provider
       value={{
@@ -119,7 +170,7 @@ const AppProvider = ({ children }) => {
         handleBack,
         handleSubmit,
         variant,
-        margin
+        margin,
       }}
     >
       <div className="mui-step-form">{children}</div>

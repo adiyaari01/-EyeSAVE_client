@@ -47,10 +47,3 @@ const StepForm = () => {
 
 export default StepForm;
 
-// const useClasses = makeStyles(() => ({
-//   root: {
-//     "& .MuiSvgIcon-root": { color: "red" },
-//     "& .Mui-completed .MuiSvgIcon-root": { color: "green" },
-//     "& .Mui-disabled .MuiStepIcon-root": { color: "cyan" }
-//   }
-// }));
