@@ -65,7 +65,7 @@ export default () => {
   console.log("unknow", unknow);
   console.log("absance", absance);
 
-  const items = [...unknow, ...absance, ...lates, ...arrived]
+  const items =  [...unknow, ...absance, ...lates, ...arrived]
 
   return (
     <Container>

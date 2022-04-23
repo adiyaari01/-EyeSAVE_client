@@ -54,8 +54,8 @@ export default memo(() => {
 
         </Grid>
         <Grid item xs={10} sm={2.5} md={2.5}>
-        <Card align="center" classes={cardClasses} onClick={() => navigate("/Forms")}>
-            <CardHeader sx={{color:'#4DDA90'}} title="Forms"/>
+        <Card align="center" classes={cardClasses} onClick={() => navigate("/events")}>
+            <CardHeader sx={{color:'#4DDA90'}} title="Events"/>
             <CardContent>
               <FormsIcon sx={{ fontSize: "100px"}} />
             </CardContent>

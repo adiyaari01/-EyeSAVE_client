@@ -15,7 +15,6 @@ import {
 } from "@mui/material";
 import LockIcon from "@mui/icons-material/LockOutlined";
 import { login } from "../../api";
-import axios from "axios";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -41,21 +40,9 @@ const Login = () => {
 
   const handleLogin = async () => {
     login(email, password);
+    setLoggedIn(true);
+    navigate("/");
   };
-  // TODO: auth with server side
-  // setLoggedIn(true);
-  // navigate("/")
-  // const flag = await login(email, password);
-  // console.log(flag);
-  //     await axios({
-  //       method: "POST",
-  //       url: "http://localhost:8000/auth",
-  //       data: {
-  //         email: email,
-  //         password: password,
-  //       },
-  //     });
-  // };
 
   return (
     <div>
@@ -104,7 +91,7 @@ const Login = () => {
           </Typography>
           {/* TODO: change syntax*/}
           <Typography>
-            Do you have an account?<Link href="#">Sign up</Link>
+            Do you have an account?<Link href="/register">Sign up</Link>
           </Typography>
         </Paper>
       </Grid>

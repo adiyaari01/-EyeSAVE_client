@@ -25,11 +25,20 @@ const Messages = () => {
   // filter all parents
   const handleSubmit = async () => {
     console.log("Submit", form);
-    //TODO: send to all parents // url: 'https://eyesave-noitfications.herokuapp.com/escort/sendToMany',
+    if (form.userId == "AllParents") {
+      const res = await axios({
+        method: "post",
+        url: "https://eyesave-noitfications.herokuapp.com/escort/sendToMany",
+        data: {
+          msg: form.msg,
+        },
+      });
+      return;
+    }
     const res = await axios({
       method: "post",
       // url: "http://localhost:8001/escort/send",
-      url: 'https://eyesave-noitfications.herokuapp.com/escort/send',
+      url: "https://eyesave-noitfications.herokuapp.com/escort/send",
       data: {
         userId: form.userId,
         msg: form.msg,
@@ -38,7 +47,7 @@ const Messages = () => {
 
     if (res.data.success) {
       alert("message send");
-      setForm({})
+      setForm({});
     }
   };
 
@@ -94,8 +103,7 @@ const Messages = () => {
                   setForm({ ...form, userId: e.target.value });
                 }}
               >
-                <MenuItem value={"None"}>None</MenuItem>
-                <MenuItem value={"All Parents"}>All Parents</MenuItem>
+                <MenuItem value={"AllParents"}>All Parents</MenuItem>
                 {parents.map((parent, i) => {
                   return (
                     <MenuItem value={parent._telegramID} key={i}>
