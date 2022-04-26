@@ -23,10 +23,10 @@ const Settings = () => {
   const handleSubmit = async () => {
     const settings = {
       _id: "6267f40027a29b9d4294a708",
-      _startMorning: `${startMorning.getHours}:${startMorning.getMinutes}`,
-      _endMorning: `${endMorning.getHours}:${endMorning.getMinutes}`,
-      _startNoon: `${startNoon.getHours}:${startNoon.getMinutes}`,
-      _endNoon: `${endNoon.getHours}:${endNoon.getMinutes}`,
+      _startMorning: `${startMorning.getHours()}:${startMorning.getMinutes()}`,
+      _endMorning: `${endMorning.getHours()}:${endMorning.getMinutes()}`,
+      _startNoon: `${startNoon.getHours()}:${startNoon.getMinutes()}`,
+      _endNoon: `${endNoon.getHours()}:${endNoon.getMinutes()}`,
     };
     console.log(settings._startMorning);
     const res = await updateSettings(settings);
