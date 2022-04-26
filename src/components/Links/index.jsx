@@ -7,7 +7,7 @@ import PauseIcon from '@mui/icons-material/PauseCircleOutlineOutlined';
 import PlayIcon from "@mui/icons-material/PlayCircleFilledWhiteOutlined";
 import MessageIcon from '@mui/icons-material/MailOutline';
 import StaffIcon from '@mui/icons-material/PeopleOutlineOutlined';
-import ChildrenIcon from '@mui/icons-material/ChildCareOutlined';
+import SettingsIcon from '@mui/icons-material/Settings';
 import AttendanceIcon from '@mui/icons-material/AssignmentTurnedInOutlined';
 import LogoutIcon from '@mui/icons-material/Logout';
 import EventsIcon from '@mui/icons-material/TheaterComedy';
@@ -39,12 +39,13 @@ export default () => {
         <NavLinkItem to="/" label="Home" Icon={HomeIcon}/>
         <NavLinkItem to="watchLive" label="Live" Icon={PlayIcon}/>
         <NavLinkItem to="recordings" label="Recordings" Icon={PauseIcon}/>
-        {/* <NavLinkItem to="forms" label="Forms" Icon={FormsIcon}/> */}
         <NavLinkItem to="messages" label="Messages" Icon={MessageIcon}/>
         <NavLinkItem to="attendance" label="Attendance" Icon={AttendanceIcon}/>
-        <NavLinkItem to="children" label="ChildrenInfo" Icon={ChildrenIcon}/>
-        <NavLinkItem to="staff" label="StaffInfo" Icon={StaffIcon}/>
+        <NavLinkItem to="info" label="Info" Icon={StaffIcon}/>
+        {/* <NavLinkItem to="children" label="ChildrenInfo" Icon={ChildrenIcon}/> */}
+        {/* <NavLinkItem to="staff" label="StaffInfo" Icon={StaffIcon}/> */}
         <NavLinkItem to="events" label="Events" Icon={EventsIcon}/>
+        <NavLinkItem to="settings" label="Settings" Icon={SettingsIcon}/>
         <NavLinkItem handleClick={handleLogout} label="Logout" Icon={LogoutIcon}/>
     </List>
 }

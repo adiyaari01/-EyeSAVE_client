@@ -39,9 +39,14 @@ const Login = () => {
   };
 
   const handleLogin = async () => {
-    login(email, password);
-    setLoggedIn(true);
-    navigate("/");
+    try {
+      await login(email, password);
+      setLoggedIn(true);
+      navigate("/");
+    } catch (error) {
+      console.log(error);
+      // TODO: allert
+    }
   };
 
   return (

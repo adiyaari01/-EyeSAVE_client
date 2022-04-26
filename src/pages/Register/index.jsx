@@ -46,13 +46,13 @@ const Login = () => {
 
   const checkFields = () => {
     if (password === confirmPassword) return true;
+    //TODO: add checking empty fields
     return false;
   };
-  const handleSignUp = async () => {
+  const handleSignUp = async (event) => {
+    event.preventDefault()
     // TODO: auth with server side
     if (!checkFields()) return;
-    setLoggedIn(true);
-    navigate("/");
     const employee = {
       _firstName : firstName,
       _lastName : lastName,
@@ -63,7 +63,9 @@ const Login = () => {
       _password : password
     }
     const res = await signUp(employee);
-    // console.log(res);
+    console.log("handleSignUp: ",res);
+    setLoggedIn(true);
+    navigate("/");
   };
   return (
     <div>
@@ -164,7 +166,7 @@ const Login = () => {
               label="I accept the terms and conditions."
             />
             <Button
-              type="submit"
+              type="button"
               variant="contained"
               style={btnStyle}
               color="secondary"

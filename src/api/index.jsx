@@ -47,8 +47,12 @@ export const postChild = async (newChild) =>
 export const postEscort = async (newEscort) =>
   await superagent.post(`${BASE_URL}/escorts`).send(newEscort);
 
-export const login = async (email, password) => {
-  await axios1({
+export const updateSettings = async (settings) =>
+{
+  return await superagent.put(`${BASE_URL}/settings/${settings._id}`).send(settings);
+}
+
+export const login = (email, password) => axios1({
     method: "post",
     url: `${BASE_URL}/auth/login`,
     data: {
@@ -56,12 +60,5 @@ export const login = async (email, password) => {
       password: password,
     },
   });
-};
 
-export const signUp = async (employee) => {
-  await axios1({
-    method: "put",
-    url: `${BASE_URL}/auth/signup`,
-    data: employee,
-  });
-};
+export const signUp = (employee) => axios1.post(`${BASE_URL}/auth/register`, employee);
