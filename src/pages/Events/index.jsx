@@ -3,9 +3,7 @@ import { useRecoilValue } from "recoil";
 import { childrenInfoState, eventsState } from "../../state/atoms";
 import { useEffect, useState } from "react";
 import EnhancedTable from "./Table";
-
 import Box from "@mui/material/Box";
-import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
@@ -32,12 +30,48 @@ export default () => {
   const [negativeEvents, setNegative] = useState([]);
   const [negativeToday, setNegativeToday] = useState([]);
   const [selectValue, setSelectValue] = useState("all");
+  const [identifyStranger, setIdentifyStranger] = useState([]);
+  const [identifyStrangerToday, setIdentifyStrangerToday] = useState([]);
+  const [identifyChildAlone, setIdentifyChildAlone] = useState([]);
+  const [identifyChildAloneToday, setIdentifyChildAloneToday] = useState([]);
+  const [identifyChildLeftAlone, setIdentifyChildLeftAlone] = useState([]);
+  const [identifyChildLeftAloneToday, setIdentifyChildLeftAloneToday] = useState([]);
 
   useEffect(() => {
     const todayEventsLocal = eventsReports.filter(
       (event) => event._date === getCurrentDate()
     );
     setTodayEvents(todayEventsLocal);
+
+    const identifyStranger = eventsReports.filter(
+      (event) => event._eventType === "Stranger"
+    );
+    setIdentifyStranger(identifyStranger);
+
+    const identifyStrangerToday = todayEvents.filter(
+      (todayEvents) => todayEvents._eventType === "Stranger"
+    );
+    setIdentifyStrangerToday(identifyStrangerToday);
+
+    const identifyChildAlone = eventsReports.filter(
+      (event) => event._eventType === "Child Alone"
+    );
+    setIdentifyChildAlone(identifyChildAlone);
+
+    const identifyChildAloneToday = eventsReports.filter(
+      (event) => event._eventType === "Child Alone"
+    );
+    setIdentifyChildAloneToday(identifyChildAloneToday);
+
+    const identifyChildLeftAlone = eventsReports.filter(
+      (event) => event._eventType === "Child Left Alone"
+    );
+    setIdentifyChildLeftAlone(identifyChildLeftAlone);
+
+    const identifyChildLeftAloneToday = eventsReports.filter(
+      (event) => event._eventType === "Child Left Alone"
+    );
+    setIdentifyChildLeftAloneToday(identifyChildLeftAloneToday);
 
     const positiveInteractions = eventsReports.filter(
       (event) => event._eventType === "Positive"
@@ -85,6 +119,24 @@ export default () => {
       case "negativeToday":
         setEvents(negativeToday);
         break;
+      case "stranger":
+        setEvents(identifyStranger);
+        break;
+      case "strangerToday":
+        setEvents(identifyStrangerToday);
+        break;
+      case "childAlone":
+        setEvents(identifyChildAlone);
+        break;
+      case "childAloneToday":
+        setEvents(identifyChildAloneToday);
+        break;
+      case "childLeftAlone":
+        setEvents(identifyChildLeftAlone);
+        break;
+      case "childLeftAloneToday":
+        setEvents(identifyChildAloneToday);
+        break;
       default:
         break;
     }
@@ -97,7 +149,7 @@ export default () => {
       <Typography sx={{ fontSize: "25px", color: "#A2A4A7" }}>
         Events
       </Typography>
-      <Box sx={{ minWidth: 120, textAlign: "right"}}>
+      <Box sx={{ minWidth: 120, textAlign: "right" }}>
         <FormControl>
           <Select
             labelId="demo-simple-select-label"
@@ -109,9 +161,8 @@ export default () => {
               backgroundColor: "#E2E3E4",
               width: "100%",
               minWidth: "150px",
-              height:"30px",
+              height: "30px",
             }}
-
           >
             <MenuItem value={"all"}>All</MenuItem>
             <MenuItem value={"today"}>Today</MenuItem>
@@ -119,6 +170,12 @@ export default () => {
             <MenuItem value={"negativeToday"}>Negative Today</MenuItem>
             <MenuItem value={"positive"}>Positive</MenuItem>
             <MenuItem value={"positiveToday"}>Positive Today</MenuItem>
+            <MenuItem value={"stranger"}>Stranger</MenuItem>
+            <MenuItem value={"strangerToday"}>Stranger Today</MenuItem>
+            <MenuItem value={"childeAlone"}>childeAlone</MenuItem>
+            <MenuItem value={"childeAloneToday"}>childe Alone Today</MenuItem>
+            <MenuItem value={"childeLeftAlone"}>childeLeftAlone</MenuItem>
+            <MenuItem value={"childeLeftAloneToday"}>childe Left Alone Today</MenuItem>
           </Select>
         </FormControl>
       </Box>
