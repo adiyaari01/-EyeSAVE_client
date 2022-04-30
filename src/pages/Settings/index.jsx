@@ -37,16 +37,16 @@ const Settings = () => {
   };
 
   const paperStyle = {
-    padding: 20,
+    padding: 10,
     width: 480,
-    height: "60vh",
-    margin: "30px auto",
+    height: "105vh",
+    margin: "10px auto",
   };
   const avaterStyle = {
     backgroundColor: "#BC88C9",
   };
   const btnStyle = {
-    margin: "30px 0",
+    margin: "25px 0",
   };
 
 
@@ -71,6 +71,20 @@ const Settings = () => {
               <div className="end">
               <h3 style={{ color: "#3F424C" }}>End Time</h3>
               <TimePicker value={endMorning} onChange={setEndMorning} />
+              </div>
+              </div>
+            </div>
+
+            <div align="left">
+              <h2 style={{ color: "#3F424C" }}>Noon Attendance</h2>
+              <div className="times">
+              <div className="start">
+              <h3 style={{ color: "#3F424C" }}>Start Time</h3>
+              <TimePicker value={startNoon} onChange={setStartNoon} />
+              </div>
+              <div className="end">
+              <h3 style={{ color: "#3F424C" }}>End Time</h3>
+              <TimePicker value={endNoon} onChange={setEndNoon} />
               </div>
               </div>
             </div>
