@@ -34,7 +34,6 @@ export default () => {
     const handleLogout = () => {
         /* TODO: auth server side logout */
         setLoggedIn(false)
-        
         navigate("/login")
     }
 
@@ -44,7 +43,7 @@ export default () => {
         {/* {user._position==='Manager' && */}
         <NavLinkItem to="recordings" label="Recordings" Icon={PauseIcon}/>
         {/* && */}
-        <NavLinkItem to="messages" label="Messages" Icon={MessageIcon}/> }
+        <NavLinkItem to="messages" label="Messages" Icon={MessageIcon}/> 
         <NavLinkItem to="attendance" label="Attendance" Icon={AttendanceIcon}/>
         <NavLinkItem to="info" label="Info" Icon={StaffIcon}/>
         {/* <NavLinkItem to="children" label="ChildrenInfo" Icon={ChildrenIcon}/> */}

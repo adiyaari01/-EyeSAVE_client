@@ -1,4 +1,5 @@
 import { useSetRecoilState } from "recoil";
+import React, { useState } from "react";
 import { IsLoggedInState } from "../../state/atoms";
 import { useNavigate } from "react-router-dom";
 import {
@@ -9,14 +10,12 @@ import {
   Checkbox,
   FormControlLabel,
   Button,
-  Link,
   Typography,
 } from "@mui/material";
 import AddIcon from "@mui/icons-material/AddCircleOutline";
 import { signUp } from "../../api";
-import React, { useState } from "react";
 
-const Login = () => {
+const Register = () => {
   const navigate = useNavigate();
   const setLoggedIn = useSetRecoilState(IsLoggedInState);
   const [firstName, setFirstName] = useState("");
@@ -181,4 +180,4 @@ const Login = () => {
     </div>
   );
 };
-export default Login;
+export default Register;
