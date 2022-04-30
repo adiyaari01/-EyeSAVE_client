@@ -1,0 +1,10 @@
+.times{
+    display:flex;
+    justify-content: space-between;
+}
+.times .start{
+    flex:1;
+}
+.times .end{
+    flex:1;
+}
