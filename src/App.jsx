@@ -19,7 +19,9 @@ import Info from "./pages/Info"
 import Settings from "./pages/Settings"
 
 export default () => {
+  
   const isLoggedIn = useRecoilValue(IsLoggedInState);
+  
   return (
     <Suspense fallback={<div>Loading...</div>}>
       <Routes>
