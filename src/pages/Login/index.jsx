@@ -15,6 +15,7 @@ import {
 } from "@mui/material";
 import LockIcon from "@mui/icons-material/LockOutlined";
 import { login } from "../../api";
+import { setUserToSessionStorage} from "../../utils"
 
 const Login = () => {
   const navigate = useNavigate();
@@ -40,9 +41,16 @@ const Login = () => {
 
   const handleLogin = async () => {
     try {
-      await login(email, password);
+      let user = await login(email, password);
+    
+    if(user){
       setLoggedIn(true);
+      setUserToSessionStorage(user.data);
       navigate("/");
+    } else{
+      setLoggedIn(false);
+    }
+     
     } catch (error) {
       console.log(error);
       // TODO: allert
