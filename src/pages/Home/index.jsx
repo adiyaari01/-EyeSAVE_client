@@ -5,6 +5,7 @@ import CardContent from "@mui/material/CardContent";
 import PauseIcon from "@mui/icons-material/PauseCircleOutlineOutlined";
 import PlayIcon from "@mui/icons-material/PlayCircleFilledWhiteOutlined";
 import MessageIcon from "@mui/icons-material/MailOutline";
+import Typography from '@mui/material/Typography';
 import StaffIcon from "@mui/icons-material/PeopleOutlineOutlined";
 import ChildrenIcon from "@mui/icons-material/ChildCareOutlined";
 import FormsIcon from '@mui/icons-material/DescriptionOutlined';
@@ -12,9 +13,12 @@ import Grid from "@mui/material/Grid";
 import { CardUseStyles } from "./GridUseStyles";
 import {useNavigate} from 'react-router-dom'
 
+
 export default memo(() => {
   const cardClasses = CardUseStyles()
   const navigate = useNavigate(); 
+ 
+// theme.typography.
   return (
     <>
       <Grid container spacing={2} justifyContent="center" mb={2} >
@@ -37,16 +41,16 @@ export default memo(() => {
       </Grid>
       <Grid container spacing={2} justifyContent="center" mt={2}>
       <Grid item xs={10} sm={2.5} md={2.5}>
-        <Card align="center" classes={cardClasses} onClick={() => navigate("/staff")}>
-            <CardHeader sx={{color:'#FDCA51'}} title="Staff info"/>
+        <Card align="center" classes={cardClasses} onClick={() => navigate("/info")}>
+            <CardHeader sx={{color:'#FDCA51',flexGrow:1}} title="Info"/>
             <CardContent>
               <StaffIcon sx={{ fontSize: "100px"}} />
             </CardContent>
           </Card>
         </Grid>
         <Grid item xs={10} sm={2.5} md={2.5}>
-        <Card align="center" classes={cardClasses} onClick={() => navigate("/children")}>
-            <CardHeader sx={{color:'#F868A3'}} title="Children info"/>
+        <Card align="center" classes={cardClasses} onClick={() => navigate("/attendance")}>
+            <CardHeader sx={{color:'#F868A3'}} title="Attendance"/>
             <CardContent>
               <ChildrenIcon sx={{ fontSize: "100px" }} />
             </CardContent>
