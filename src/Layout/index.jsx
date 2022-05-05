@@ -17,7 +17,6 @@ const DrawerStyles = makeStyles({
 });
 
 const drawerWidth = 280 ;
-// Todo: how to set background of drawer?
 // memo: save cache, will not render a component that didn't change
 export default memo(() => {
   const [isOpen, setMenu] = useState(false);

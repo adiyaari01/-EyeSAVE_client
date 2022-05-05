@@ -14,3 +14,10 @@ ul {
 }
 
 
+
+/* @media only screen and (max-width:800px){
+  .MuiTypography-root{
+    font-size:1.2rem;
+  }
+} */
+
