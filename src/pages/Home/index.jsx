@@ -22,7 +22,7 @@ export default memo(() => {
   return (
     <>
       <Grid container spacing={2} justifyContent="center" mb={2} >
-        <Grid item xs={10} sm={4} md={4}>
+        <Grid item xs={10} sm={5} md={4}>
           <Card align="center" classes={cardClasses} onClick={() => navigate("/watchLive")}>
             <CardHeader sx={{color: '#5FEBDC'}} title="Watch LIVE" />
             <CardContent>
@@ -30,9 +30,9 @@ export default memo(() => {
             </CardContent>
           </Card>
         </Grid>
-        <Grid item xs={10} sm={4} md={4}>
+        <Grid item xs={10} sm={5} md={4}>
           <Card align="center" classes={cardClasses} onClick={() => navigate("/recrdongs")}>
-            <CardHeader sx={{color:'#c1e67a'}} title="Recordings"/>
+            <CardHeader sx={{color:'#c1e57a'}} title="Recordings"/>
             <CardContent>
               <PauseIcon sx={{ fontSize: "100px"}} />
             </CardContent>
@@ -40,7 +40,7 @@ export default memo(() => {
         </Grid>
       </Grid>
       <Grid container spacing={2} justifyContent="center" mt={2}>
-      <Grid item xs={10} sm={2.5} md={2.5}>
+      <Grid item xs={10} sm={5} md={3} lg={2.5}>
         <Card align="center" classes={cardClasses} onClick={() => navigate("/info")}>
             <CardHeader sx={{color:'#FDCA51',flexGrow:1}} title="Info"/>
             <CardContent>
@@ -48,16 +48,16 @@ export default memo(() => {
             </CardContent>
           </Card>
         </Grid>
-        <Grid item xs={10} sm={2.5} md={2.5}>
+        <Grid item xs={10} sm={5} md={3} lg={2.5}>
         <Card align="center" classes={cardClasses} onClick={() => navigate("/attendance")}>
-            <CardHeader sx={{color:'#F868A3'}} title="Attendance"/>
+            <CardHeader sx={{color:'#F858A3'}} title="Attendance"/>
             <CardContent>
               <ChildrenIcon sx={{ fontSize: "100px" }} />
             </CardContent>
           </Card>
 
         </Grid>
-        <Grid item xs={10} sm={2.5} md={2.5}>
+        <Grid item xs={10} sm={5} md={3} lg={2.5}>
         <Card align="center" classes={cardClasses} onClick={() => navigate("/events")}>
             <CardHeader sx={{color:'#4DDA90'}} title="Events"/>
             <CardContent>
@@ -65,7 +65,7 @@ export default memo(() => {
             </CardContent>
           </Card>
         </Grid>
-        <Grid item xs={10} sm={2.5} md={2.5}>
+        <Grid item xs={10} sm={5} md={3} lg={2.5}>
         <Card align="center" classes={cardClasses} onClick={() => navigate("/Messages")}>
             <CardHeader sx={{color:'#c483d9'}} title="Messages" />
             <CardContent>
