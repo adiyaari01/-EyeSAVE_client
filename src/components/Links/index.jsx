@@ -13,7 +13,7 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import EventsIcon from '@mui/icons-material/TheaterComedy';
 import {Button} from "@mui/material";
 import "./styles.css";
-import { getUserFromSessionStorage } from "../../utils";
+import { getUserFromSessionStorage, removeUserFromSessionStorage } from "../../utils";
 
 // text-decoration="none"
 
@@ -27,28 +27,29 @@ const NavLinkItem = ({Icon, to, label, handleClick}) => <div className="nav-item
 
 export default () => {
     const navigate = useNavigate()
-    const setLoggedIn = useSetRecoilState(IsLoggedInState)
+    const setLoggedIn = useSetRecoilState(IsLoggedInState);
     const user = getUserFromSessionStorage();
+
     const handleLogout = () => {
         /* TODO: auth server side logout */
-        setLoggedIn(false)
-        navigate("/login")
+        setLoggedIn(false);
+        removeUserFromSessionStorage();
+        navigate("/login");
+        window.location.reload();
     }
 
     return <List sx={{width: '100%', maxWidth: 360}}>
         <NavLinkItem to="/" label="Home" Icon={HomeIcon}/>
-        <NavLinkItem to="watchLive" label="Live" Icon={PlayIcon}/>
-        {/* {user._position==='Manager' && */}
+        {user._position==='Manager' &&
+        <>
+        <NavLinkItem to="watchLive" label="Live" Icon={PlayIcon}/> 
         <NavLinkItem to="recordings" label="Recordings" Icon={PauseIcon}/>
-        {/* && */}
+        </>
+        }
         <NavLinkItem to="messages" label="Messages" Icon={MessageIcon}/> 
         <NavLinkItem to="attendance" label="Attendance" Icon={AttendanceIcon}/>
         <NavLinkItem to="info" label="Info" Icon={StaffIcon}/>
-        {/* <NavLinkItem to="children" label="ChildrenInfo" Icon={ChildrenIcon}/> */}
-        {/* <NavLinkItem to="staff" label="StaffInfo" Icon={StaffIcon}/> */}
-        {/* {user._position==='Manager' && */}
         <NavLinkItem to="events" label="Events" Icon={EventsIcon}/>
-            {/* } */}
         <NavLinkItem to="settings" label="Settings" Icon={SettingsIcon}/>
         <NavLinkItem handleClick={handleLogout} label="Logout" Icon={LogoutIcon}/>
     </List>

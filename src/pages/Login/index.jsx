@@ -2,6 +2,7 @@ import { useSetRecoilState } from "recoil";
 import React, { useState } from "react";
 import { IsLoggedInState } from "../../state/atoms";
 import { useNavigate } from "react-router-dom";
+import { useRecoilValue } from "recoil";
 import {
   Grid,
   Paper,
@@ -15,29 +16,29 @@ import {
 } from "@mui/material";
 import LockIcon from "@mui/icons-material/LockOutlined";
 import { login } from "../../api";
-import { setUserToSessionStorage} from "../../utils"
+import { setUserToSessionStorage, getUserFromSessionStorage} from "../../utils"
+
+const paperStyle = {
+  padding: 20,
+  width: 280,
+  // height: "70vh",
+  margin: "50px auto",
+};
+const avaterStyle = {
+  backgroundColor: "#BC88C9",
+};
+const btnStyle = {
+  margin: "8px 0",
+};
+const fieldStyle = {
+  margin: "8px 0",
+};
 
 const Login = () => {
   const navigate = useNavigate();
   const setLoggedIn = useSetRecoilState(IsLoggedInState);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
-  const paperStyle = {
-    padding: 20,
-    width: 280,
-    // height: "70vh",
-    margin: "50px auto",
-  };
-  const avaterStyle = {
-    backgroundColor: "#BC88C9",
-  };
-  const btnStyle = {
-    margin: "8px 0",
-  };
-  const fieldStyle = {
-    margin: "8px 0",
-  };
 
   const handleLogin = async () => {
     try {
@@ -57,6 +58,12 @@ const Login = () => {
     }
   };
 
+  const isLoggedInSession = !!getUserFromSessionStorage();
+
+  if (isLoggedInSession){
+    navigate("/");
+  }
+  
   return (
     <div>
       <Grid align="center">
@@ -102,7 +109,6 @@ const Login = () => {
           <Typography>
             <Link href="#">Forgot password?</Link>
           </Typography>
-          {/* TODO: change syntax*/}
           <Typography>
             Do you have an account?<Link href="/register">Sign up</Link>
           </Typography>

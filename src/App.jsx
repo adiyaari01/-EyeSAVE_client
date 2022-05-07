@@ -1,4 +1,4 @@
-import { Suspense } from "react";
+import React,{ Suspense } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 import { IsLoggedInState } from "./state/atoms";
@@ -18,11 +18,12 @@ import Recordings from "./pages/Recordings";
 import Messages from "./pages/Messages"
 import Info from "./pages/Info"
 import Settings from "./pages/Settings"
+import { getUserFromSessionStorage} from "./utils"
 
 export default () => {
   
-  const isLoggedIn = useRecoilValue(IsLoggedInState);
-  
+  const isLoggedIn = !!getUserFromSessionStorage() || useRecoilValue(IsLoggedInState);
+
   return (
     <Suspense fallback={<div>Loading...</div>}>
       <Routes>
@@ -41,7 +42,7 @@ export default () => {
               <Route path="/messages" element={<Messages />} />
               <Route path="/info" element={<Info />} />
               <Route path="/settings" element={<Settings />} />
-              
+              <Route path="/login" element={<Navigate to="/" />}/>
             </Route>
           </>
         ) : (
