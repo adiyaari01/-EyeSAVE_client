@@ -5,7 +5,6 @@ import CardContent from "@mui/material/CardContent";
 import PauseIcon from "@mui/icons-material/PauseCircleOutlineOutlined";
 import PlayIcon from "@mui/icons-material/PlayCircleFilledWhiteOutlined";
 import MessageIcon from "@mui/icons-material/MailOutline";
-import Typography from '@mui/material/Typography';
 import StaffIcon from "@mui/icons-material/PeopleOutlineOutlined";
 import ChildrenIcon from "@mui/icons-material/ChildCareOutlined";
 import FormsIcon from '@mui/icons-material/DescriptionOutlined';
@@ -31,7 +30,7 @@ export default memo(() => {
           </Card>
         </Grid>
         <Grid item xs={10} sm={5} md={4}>
-          <Card align="center" classes={cardClasses} onClick={() => navigate("/recrdongs")}>
+          <Card align="center" classes={cardClasses} onClick={() => navigate("/recordings")}>
             <CardHeader sx={{color:'#c1e57a'}} title="Recordings"/>
             <CardContent>
               <PauseIcon sx={{ fontSize: "100px"}} />

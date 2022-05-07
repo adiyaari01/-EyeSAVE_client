@@ -67,11 +67,14 @@ function EnhancedTableHead(props) {
     order,
     orderBy,
   } = props;
+  const matches = useMediaQuery('(min-width:600px)');
 
   return (
     <TableHead>
       <TableRow>
-        {headCells.map((headCell) => (
+        {headCells
+        .filter(headCell => matches || ((headCell.id !== 'startTime') && (headCell.id !== 'finishTime')))
+        .map((headCell) => (
           <TableCell
             key={headCell.id}
             align={"center"}
@@ -225,7 +228,7 @@ export default function EnhancedTable({ events, children }) {
     <div>
         <TableContainer sx={{ mt: 5 }}>
           <Table
-            sx={{ minWidth: 750, backgroundColor:"#3F414D"}}
+            sx={{ minWidth: 350, backgroundColor:"#3F414D"}}
             aria-labelledby="tableTitle"
             size={dense ? "small" : "medium"}
           >
@@ -254,8 +257,8 @@ export default function EnhancedTable({ events, children }) {
                     <TableCell sx={{fontSize:matches?"14px":"10px", color:row.event==="Positive"?"#68B294":row.event==="Negative"?"#AD4675":"#A2A4A7"}} align="center">{matches?row.event:row.event.charAt(0)}</TableCell>
                     <TableCell sx={{fontSize:matches?"14px":"10px", color:"#A2A4A7"}} align="center">{matches?row.date:row.date.slice(5,10)}</TableCell>
                     <TableCell sx={{fontSize:matches?"14px":"10px", color:"#A2A4A7"}} align="center">{row.startTime}</TableCell>
-                    <TableCell sx={{fontSize:matches?"14px":"10px", color:"#A2A4A7"}} align="center">{row.finishTime}</TableCell>
-                    <TableCell sx={{fontSize:matches?"14px":"10px", color:"#A2A4A7"}} align="center">{row.child1}</TableCell>
+                    {matches && <TableCell sx={{fontSize:matches?"14px":"10px", color:"#A2A4A7"}} align="center">{row.finishTime}</TableCell>}
+                    {matches && <TableCell sx={{fontSize:matches?"14px":"10px", color:"#A2A4A7"}} align="center">{row.child1}</TableCell>}
                     <TableCell sx={{fontSize:matches?"14px":"10px", color:"#A2A4A7"}} align="center">{row.child2}</TableCell>
                   </TableRow>
                 );

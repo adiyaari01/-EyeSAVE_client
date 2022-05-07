@@ -14,6 +14,7 @@ import Parents from "./pages/Parents";
 import Events from "./pages/Events";
 import ChildRegistrationForm from "./pages/ChildRegistrationForm";
 import WatchLive from "./pages/WatchLive";
+import Recordings from "./pages/Recordings";
 import Messages from "./pages/Messages"
 import Info from "./pages/Info"
 import Settings from "./pages/Settings"
@@ -36,6 +37,7 @@ export default () => {
               <Route path="/staff" element={<Staff />} />
               <Route path="/events" element={<Events />} />
               <Route path="/watchLive" element={<WatchLive />} />
+              <Route path="/recordings" element={<Recordings />} />
               <Route path="/messages" element={<Messages />} />
               <Route path="/info" element={<Info />} />
               <Route path="/settings" element={<Settings />} />
