@@ -9,6 +9,7 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
+import useMediaQuery from '@mui/material/useMediaQuery'
 import { useEffect } from "react";
 
 function createData(date, event, startTime, finishTime, child1, child2) {
@@ -59,18 +60,6 @@ const headCells = [
     disablePadding: false,
     label: "Child 2",
   },
-  //   {
-  //     id: 'videoUrl',
-  //     numeric: false,
-  //     disablePadding: false,
-  //     label: 'Video Url',
-  //   },
-  //   {
-  //     id: 'protein',
-  //     numeric: true,
-  //     disablePadding: false,
-  //     label: 'Protein (g)',
-  //   },
 ];
 
 function EnhancedTableHead(props) {
@@ -88,7 +77,7 @@ function EnhancedTableHead(props) {
             align={"center"}
             padding={headCell.disablePadding ? "none" : "normal"}
             sortDirection={orderBy === headCell.id ? order : false}
-            sx={{color:"#A2A4A7", fontSize:"16px"}}
+            sx={{color:"#A2A4A7", fontSize:"14px"}}
           >{headCell.label}
           </TableCell>
         ))}
@@ -157,15 +146,14 @@ export default function EnhancedTable({ events, children }) {
   const [dense, setDense] = React.useState(false);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
   const [rows, setRows] = React.useState([]);
+  const matches = useMediaQuery('(min-width:600px)');
 
   useEffect(() => {
-    // console.log("Events", events); TODO: delete
     let isMount = true;
     if (isMount) {
       const data = events.map((event) => {
         const child1 = children.filter((c) => c._id === event._child1);
         const child2 = children.filter((c) => c._id === event._child2);
-        // console.log("childe1:", child1); TODO: delete
         if (child1) {
           var childName1 = child1[0]?._firstName + " " + child1[0]?._lastName;
         }
@@ -263,12 +251,12 @@ export default function EnhancedTable({ events, children }) {
                     selected={isItemSelected}
                   >
                     
-                    <TableCell sx={{fontSize:"16px", color:row.event==="Positive"?"#68B294":row.event==="Negative"?"#AD4675":"#A2A4A7"}} align="center">{row.event}</TableCell>
-                    <TableCell sx={{fontSize:"16px", color:"#A2A4A7"}} align="center">{row.date}</TableCell>
-                    <TableCell sx={{fontSize:"16px", color:"#A2A4A7"}} align="center">{row.startTime}</TableCell>
-                    <TableCell sx={{fontSize:"16px", color:"#A2A4A7"}} align="center">{row.finishTime}</TableCell>
-                    <TableCell sx={{fontSize:"16px", color:"#A2A4A7"}} align="center">{row.child1}</TableCell>
-                    <TableCell sx={{fontSize:"16px", color:"#A2A4A7"}} align="center">{row.child2}</TableCell>
+                    <TableCell sx={{fontSize:"14px", color:row.event==="Positive"?"#68B294":row.event==="Negative"?"#AD4675":"#A2A4A7"}} align="center">{matches?row.event:row.event.charAt(0)}</TableCell>
+                    <TableCell sx={{fontSize:"14px", color:"#A2A4A7"}} align="center">{matches?row.date:row.date.slice(5,10)}</TableCell>
+                    <TableCell sx={{fontSize:"14px", color:"#A2A4A7"}} align="center">{row.startTime}</TableCell>
+                    <TableCell sx={{fontSize:"14px", color:"#A2A4A7"}} align="center">{row.finishTime}</TableCell>
+                    <TableCell sx={{fontSize:"14px", color:"#A2A4A7"}} align="center">{row.child1}</TableCell>
+                    <TableCell sx={{fontSize:"14px", color:"#A2A4A7"}} align="center">{row.child2}</TableCell>
                   </TableRow>
                 );
               })}
