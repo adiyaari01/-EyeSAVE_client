@@ -40,7 +40,7 @@ export default () => {
 
     return <List sx={{width: '100%', maxWidth: 360}}>
         <NavLinkItem to="/" label="Home" Icon={HomeIcon}/>
-        {user._position==='Manager' &&
+        {user?._position==='Manager' &&
         <>
         <NavLinkItem to="watchLive" label="Live" Icon={PlayIcon}/> 
         <NavLinkItem to="recordings" label="Recordings" Icon={PauseIcon}/>
