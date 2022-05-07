@@ -26,7 +26,7 @@ const Login = () => {
   const paperStyle = {
     padding: 20,
     width: 280,
-    height: "70vh",
+    // height: "70vh",
     margin: "50px auto",
   };
   const avaterStyle = {
@@ -53,7 +53,7 @@ const Login = () => {
      
     } catch (error) {
       console.log(error);
-      // TODO: allert
+      alert("Wrong credentials");
     }
   };
 

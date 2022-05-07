@@ -65,14 +65,17 @@ const Messages = () => {
   const paperStyle = {
     padding: 20,
     width: 480,
-    height: "60vh",
+    // height: "60vh",
     margin: "30px auto",
+    backgroundColor:"#E5E5E5",
   };
   const avaterStyle = {
     backgroundColor: "#BC88C9",
   };
   const btnStyle = {
     margin: "8px 0",
+    fontFamily: "Helvetica",
+    color:"#E5E5E5",
   };
   const fieldStyle = {
     margin: "8px 0",
