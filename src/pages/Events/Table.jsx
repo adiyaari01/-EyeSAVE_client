@@ -251,12 +251,12 @@ export default function EnhancedTable({ events, children }) {
                     selected={isItemSelected}
                   >
                     
-                    <TableCell sx={{fontSize:"14px", color:row.event==="Positive"?"#68B294":row.event==="Negative"?"#AD4675":"#A2A4A7"}} align="center">{matches?row.event:row.event.charAt(0)}</TableCell>
-                    <TableCell sx={{fontSize:"14px", color:"#A2A4A7"}} align="center">{matches?row.date:row.date.slice(5,10)}</TableCell>
-                    <TableCell sx={{fontSize:"14px", color:"#A2A4A7"}} align="center">{row.startTime}</TableCell>
-                    <TableCell sx={{fontSize:"14px", color:"#A2A4A7"}} align="center">{row.finishTime}</TableCell>
-                    <TableCell sx={{fontSize:"14px", color:"#A2A4A7"}} align="center">{row.child1}</TableCell>
-                    <TableCell sx={{fontSize:"14px", color:"#A2A4A7"}} align="center">{row.child2}</TableCell>
+                    <TableCell sx={{fontSize:matches?"14px":"10px", color:row.event==="Positive"?"#68B294":row.event==="Negative"?"#AD4675":"#A2A4A7"}} align="center">{matches?row.event:row.event.charAt(0)}</TableCell>
+                    <TableCell sx={{fontSize:matches?"14px":"10px", color:"#A2A4A7"}} align="center">{matches?row.date:row.date.slice(5,10)}</TableCell>
+                    <TableCell sx={{fontSize:matches?"14px":"10px", color:"#A2A4A7"}} align="center">{row.startTime}</TableCell>
+                    <TableCell sx={{fontSize:matches?"14px":"10px", color:"#A2A4A7"}} align="center">{row.finishTime}</TableCell>
+                    <TableCell sx={{fontSize:matches?"14px":"10px", color:"#A2A4A7"}} align="center">{row.child1}</TableCell>
+                    <TableCell sx={{fontSize:matches?"14px":"10px", color:"#A2A4A7"}} align="center">{row.child2}</TableCell>
                   </TableRow>
                 );
               })}

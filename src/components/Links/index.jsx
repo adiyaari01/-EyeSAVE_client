@@ -25,8 +25,6 @@ const NavLinkItem = ({Icon, to, label, handleClick}) => <div className="nav-item
     }
 </div>
 
-// Todo: how to control each icon?
-
 export default () => {
     const navigate = useNavigate()
     const setLoggedIn = useSetRecoilState(IsLoggedInState)
