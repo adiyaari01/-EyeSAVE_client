@@ -29,11 +29,11 @@ const Settings = () => {
       _startNoon: `${startNoon.getHours()}:${startNoon.getMinutes()}`,
       _endNoon: `${endNoon.getHours()}:${endNoon.getMinutes()}`,
       _cameraName1: cameraName1,
-      _cameraLink: cameraLink1,
+      _cameraLink1: cameraLink1,
       _cameraName2: cameraName2,
-      _cameraLink: cameraLink2,
+      _cameraLink2: cameraLink2,
       _cameraName3: cameraName3,
-      _cameraLink: cameraLink3,
+      _cameraLink3: cameraLink3,
     };
     console.log(settings._startMorning);
     const res = await updateSettings(settings);
