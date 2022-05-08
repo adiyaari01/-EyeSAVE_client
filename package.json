@@ -33,6 +33,7 @@
     "superagent": "^7.1.1"
   },
   "devDependencies": {
+    "@import-meta-env/unplugin": "^0.1.8",
     "@vitejs/plugin-react": "^1.0.7",
     "vite": "^2.8.0"
   }

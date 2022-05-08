@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
+import { ACCESS_ID, ACCESS_KEY, REGION } from "../../constants";
 import AWS from "aws-sdk";
 
 AWS.config.update({
-  accessKeyId: import.meta.env.VITE_ACCESS_ID,
-  secretAccessKey: import.meta.env.VITE_ACCESS_KEY,
-  region: import.meta.env.VITE_REGION,
+  accessKeyId: ACCESS_ID,
+  secretAccessKey: ACCESS_KEY,
+  region: REGION,
 });
 const s3 = new AWS.S3();
 
