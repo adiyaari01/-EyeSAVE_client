@@ -14,6 +14,7 @@ import {
 } from "@mui/material";
 import AddIcon from "@mui/icons-material/AddCircleOutline";
 import { signUp } from "../../api";
+import { CostExplorer } from "aws-sdk";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -26,11 +27,12 @@ const Register = () => {
   const [address, setAddress] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [image, setImage] = useState("");
 
   const paperStyle = {
     padding: 20,
     width: 300,
-    height: "80vh",
+    // height: "80vh",
     margin: "50px auto",
   };
   const avaterStyle = {
@@ -48,24 +50,41 @@ const Register = () => {
     //TODO: add checking empty fields
     return false;
   };
+
+  const fileToBase64 = (file) => {
+    return new Promise((resolve) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = function () {
+        resolve(reader.result);
+      };
+    });
+  };
   const handleSignUp = async (event) => {
-    event.preventDefault()
+    event.preventDefault();
+
+    const base64 = await fileToBase64(image);
+
+
+    
     // TODO: auth with server side
     if (!checkFields()) return;
     const employee = {
-      _firstName : firstName,
-      _lastName : lastName,
-      _id : id,
-      _email : email,
-      _phoneNumber : phoneNumber,
-      _address : address,
-      _password : password
-    }
+      _firstName: firstName,
+      _lastName: lastName,
+      _id: id,
+      _email: email,
+      _phoneNumber: phoneNumber,
+      _address: address,
+      _password: password,
+      _imageUrl: base64,
+    };
     const res = await signUp(employee);
-    console.log("handleSignUp: ",res);
+    console.log("handleSignUp: ", res);
     setLoggedIn(true);
     navigate("/");
   };
+  console.log(image);
   return (
     <div>
       <Grid align="center">
@@ -158,6 +177,17 @@ const Register = () => {
               placeholder="Enter again your password"
               onChange={() => {
                 setConfirmPassword(event.target.value);
+              }}
+            />
+            <TextField
+              fullWidth
+              id="standard-basic"
+              label="Confirm Password"
+              variant="standard"
+              placeholder="Enter again your password"
+              type="file"
+              onChange={() => {
+                setImage(event.target.files[0]);
               }}
             />
             <FormControlLabel
