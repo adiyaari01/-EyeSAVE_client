@@ -4,7 +4,7 @@ import { AppProvider } from "../../context";
 
 export default () => (
   <AppProvider>
-    <Container component="main" maxWidth="sm" sx={{ mb: 4, /*color:'#3F424C'*/}}>
+    <Container component="main" maxWidth="lg" sx={{ mb: 4, /*color:'#3F424C'*/}}>
       <Paper 
         variant="outlined"
         sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 }, background:'#E3E3E3 !important'/*background:'#3F414D', color:'#F0F2F5'*/}}
