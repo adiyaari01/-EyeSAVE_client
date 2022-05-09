@@ -47,6 +47,9 @@ export const postChild = async (newChild) =>
 export const postEscort = async (newEscort) =>
   await superagent.post(`${BASE_URL}/escorts`).send(newEscort);
 
+  export const updateChild = async (updateChild, childId) =>
+  await superagent.put(`${BASE_URL}/children/${childId}`).send(updateChild);
+
 export const updateSettings = async (settings) =>
 {
   return await superagent.put(`${BASE_URL}/settings/${settings._id}`).send(settings);

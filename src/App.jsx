@@ -3,6 +3,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 import { IsLoggedInState } from "./state/atoms";
 import Layout from "./Layout";
+import AddEscort from "./components/forms/AddEscort"
 import Home from "./pages/Home";
 import Kindergarten from "./pages/Kindergarten";
 import Login from "./pages/Login";
@@ -49,6 +50,7 @@ export default () => {
           <>
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/addEscort" element={<AddEscort />} />
             <Route path="/childForm/:kindergartenId" element={<ChildRegistrationForm />} />
             <Route path="/" element={<Navigate to="/login" />}/>
           </>
