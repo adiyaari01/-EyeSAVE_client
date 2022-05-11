@@ -308,7 +308,7 @@ export default memo(() => {
             classes={cardClasses}
             onClick={handleClickOpenCamera}
           >
-            <CardHeader sx={{ color: "#4DDA90" }} title="Cameras Settings" />
+            <CardHeader sx={{ color: "#4DDA90" }} title="Cameras" />
             <CardContent>
               <VideoSettingsTwoToneIcon sx={{ fontSize: "80px" }} />
             </CardContent>
