@@ -8,6 +8,8 @@ import MenuIcon from "@mui/icons-material/Menu";
 import LogoMenu from "../components/LogoMenu";
 import Links from "../components/Links";
 import SearchIcon from "@mui/icons-material/Search";
+import SettingsIcon from '@mui/icons-material/Settings';
+import LogoutIcon from '@mui/icons-material/Logout';
 import { makeStyles } from "@mui/styles";
 import { Box, Stack } from "@mui/material";
 import "./styles.css";
@@ -43,6 +45,9 @@ export default memo(() => {
             <MenuIcon />
           </IconButton>
           <div style={{ display: "flex", flexGrow: 1 }}></div>
+          <SearchIcon sx={{mr:3, color:'#E3E3E3'}}/>
+          <SettingsIcon sx={{mr:3, color:'#E3E3E3'}} />
+          <LogoutIcon sx={{mr:3, color:'#E3E3E3'}} />
           <img
             width={50}
             height={50}
@@ -50,7 +55,6 @@ export default memo(() => {
             src={user?._imageUrl}
             alt=""
           />
-          <SearchIcon />
         </Toolbar>
       </AppBar>
       <Box
