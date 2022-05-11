@@ -11,16 +11,21 @@ import FormsIcon from '@mui/icons-material/DescriptionOutlined';
 import Grid from "@mui/material/Grid";
 import { CardUseStyles } from "./GridUseStyles";
 import {useNavigate} from 'react-router-dom'
+import { getUserFromSessionStorage } from "../../utils";
 
 
 export default memo(() => {
-  const cardClasses = CardUseStyles()
   const navigate = useNavigate(); 
+  const cardClasses = CardUseStyles()
+  const user = getUserFromSessionStorage();
+
  
 // theme.typography.
   return (
     <>
       <Grid container spacing={2} justifyContent="center" mb={2} >
+      {user?._position==='Manager' &&
+      <>
         <Grid item xs={10} sm={5} md={4}>
           <Card align="center" classes={cardClasses} onClick={() => navigate("/watchLive")}>
             <CardHeader sx={{color: '#5FEBDC'}} title="Watch LIVE" />
@@ -37,6 +42,8 @@ export default memo(() => {
             </CardContent>
           </Card>
         </Grid>
+      </>
+      }
       </Grid>
       <Grid container spacing={2} justifyContent="center" mt={2}>
       <Grid item xs={10} sm={5} md={3} lg={2.5}>

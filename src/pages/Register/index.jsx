@@ -182,9 +182,8 @@ const Register = () => {
             <TextField
               fullWidth
               id="standard-basic"
-              label="Confirm Password"
               variant="standard"
-              placeholder="Enter again your password"
+              InputProps={{ disableUnderline: true }}
               type="file"
               onChange={() => {
                 setImage(event.target.files[0]);

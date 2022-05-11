@@ -19,8 +19,10 @@ import DateMomentUtils from "@date-io/moment";
 import { TimePicker, MuiPickersUtilsProvider } from "@material-ui/pickers";
 import { updateSettings } from "../../api";
 import SettingsIcon from "@mui/icons-material/Settings";
+import { getUserFromSessionStorage } from "../../utils";
 
 export default memo(() => {
+  const user = getUserFromSessionStorage();
   const cardClasses = CardUseStyles();
   const [openMorning, setOpenMorning] = React.useState(false);
   const [openYard, setOpenYard] = React.useState(false);
@@ -302,18 +304,23 @@ export default memo(() => {
           </DialogActions>
         </Dialog>
 
-        <Grid item xs={10} sm={4} md={4} lg={3}>
-          <Card
-            align="center"
-            classes={cardClasses}
-            onClick={handleClickOpenCamera}
-          >
-            <CardHeader sx={{ color: "#4DDA90" }} title="Cameras" />
-            <CardContent>
-              <VideoSettingsTwoToneIcon sx={{ fontSize: "80px" }} />
-            </CardContent>
-          </Card>
-        </Grid>
+        {user?._position === "Manager" && (
+          <>
+            <Grid item xs={10} sm={4} md={4} lg={3}>
+              <Card
+                align="center"
+                classes={cardClasses}
+                onClick={handleClickOpenCamera}
+              >
+                <CardHeader sx={{ color: "#4DDA90" }} title="Cameras" />
+                <CardContent>
+                  <VideoSettingsTwoToneIcon sx={{ fontSize: "80px" }} />
+                </CardContent>
+              </Card>
+            </Grid>
+          </>
+        )}
+
         <Dialog open={openCamera} onClose={handleCloseCamera}>
           <DialogContent sx={{ background: "#E3E3E3" }}>
             {/* <Avatar style={avaterStyle}>
@@ -321,7 +328,7 @@ export default memo(() => {
           </Avatar> */}
             <h3 style={{ color: "#3F424C" }}>Cameras Settings</h3>
             <form>
-            <Grid container spacing={2}>
+              <Grid container spacing={2}>
                 <Grid item xs={12} sm={6}>
                   <TextField
                     id="standard-basic"
@@ -389,9 +396,8 @@ export default memo(() => {
                     }}
                   />
                 </Grid>
-            </Grid>
+              </Grid>
             </form>
-
           </DialogContent>
           <DialogActions sx={{ background: "#E3E3E3" }}>
             <Button
