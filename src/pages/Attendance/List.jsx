@@ -1,9 +1,12 @@
 import { Card, Stack, Typography } from "@mui/material";
+import useMediaQuery from '@mui/material/useMediaQuery'
 import "./styles.css";
 
 export function List(props) {
+  const matches = useMediaQuery('(min-width:600px)');
+
   return (
-    <Stack direction={"row"} flexWrap="wrap" gap={3}>
+    <Stack direction={"row"} flexWrap="wrap" gap={3} justifyContent={!matches?"center":"left"}>
       {props.items.map((children) => {
         // const exists
 

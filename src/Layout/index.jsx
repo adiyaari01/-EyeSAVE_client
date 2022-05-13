@@ -69,6 +69,7 @@ const handleSettings = () => {
           <SettingsIcon onClick={handleSettings} sx={{mr:3, color:'#E3E3E3', cursor:'pointer'}} />
           <LogoutIcon onClick={handleLogout} sx={{mr:3, color:'#E3E3E3', cursor:'pointer'}} />
           <img
+            onClick={() => navigate("/")}
             width={50}
             height={50}
             style={{ borderRadius: "100%" }}

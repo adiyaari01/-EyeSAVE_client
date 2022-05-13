@@ -1,8 +1,11 @@
 import { Card, Stack, Typography } from "@mui/material";
+import useMediaQuery from '@mui/material/useMediaQuery'
 
 export function List(props) {
+  const matches = useMediaQuery('(min-width:600px)');
+  
   return (
-    <Stack justifyContent={"left"} direction={"row"} flexWrap="wrap" gap={3}>
+    <Stack justifyContent={matches?"center":"left"} direction={"row"} flexWrap="wrap" gap={3}>
       {props.items.map((children) => {
         return (
           <Card key={children._id} sx={{ width: 270, height: 200, backgroundColor: "#3F424C !important",

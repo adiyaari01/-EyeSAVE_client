@@ -8,7 +8,7 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import AddIcon from "@mui/icons-material/AddCircleOutline";
-import { Avatar, TextField, Button } from "@mui/material";
+import { Avatar, TextField, Button, Typography} from "@mui/material";
 import { postChild, postEscort } from "../../api";
 
 export default () => {
@@ -60,6 +60,9 @@ export default () => {
 
   return (
     <Container>
+      <Typography sx={{ fontSize: "25px", color: "#A2A4A7" }}>
+        Children info
+      </Typography>
       <Button
         sx={{
           color: "#BC88C9",

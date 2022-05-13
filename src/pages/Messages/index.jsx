@@ -64,7 +64,7 @@ const Messages = () => {
 
   const paperStyle = {
     padding: 20,
-    width: 480,
+    maxWidth: 480,
     // height: "60vh",
     margin: "30px auto",
     backgroundColor:"#E5E5E5",

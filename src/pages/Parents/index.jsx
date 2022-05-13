@@ -2,10 +2,9 @@ import * as React from "react";
 import { Container, Stack } from "@mui/material";
 import { useRecoilValue } from "recoil";
 import { escortsInfoState } from "../../state/atoms";
-import { childrenInfoState } from "../../state/atoms";
 import { List } from "./List";
 import AddIcon from "@mui/icons-material/AddCircleOutline";
-import {postEscort} from "../../api"
+import { postEscort } from "../../api";
 import {
   Avatar,
   TextField,
@@ -14,9 +13,8 @@ import {
   DialogActions,
   DialogContent,
   DialogTitle,
+  Typography
 } from "@mui/material";
-
-
 
 export default () => {
   const [open, setOpen] = React.useState(false);
@@ -38,7 +36,7 @@ export default () => {
 
   const hadleDialog = (event) => {
     setPosition(event.target.value);
-  }
+  };
 
   const handleSubmit = async () => {
     const escort = {
@@ -61,6 +59,9 @@ export default () => {
 
   return (
     <Container>
+      <Typography sx={{ fontSize: "25px", color: "#A2A4A7" }}>
+        Parents info
+      </Typography>
       <Button
         sx={{
           color: "#BC88C9",
@@ -76,8 +77,8 @@ export default () => {
       </Button>
 
       <Dialog open={open} onClose={handleClose}>
-        <DialogTitle sx={{background: "#E3E3E3"}}>Escort Details</DialogTitle>
-        <DialogContent sx={{background: "#E3E3E3"}}>
+        <DialogTitle sx={{ background: "#E3E3E3" }}>Escort Details</DialogTitle>
+        <DialogContent sx={{ background: "#E3E3E3" }}>
           <form>
             <TextField
               onChange={() => {
@@ -85,7 +86,6 @@ export default () => {
               }}
               fullWidth
               id="standard-basic"
-
               name="cmployeeFirstName"
               label="Escort First Name"
               variant="standard"
@@ -130,8 +130,11 @@ export default () => {
             />
           </form>
         </DialogContent>
-        <DialogActions sx={{background: "#E3E3E3"}}>
-        <Button style={{margin: '15px', color: "#3F414D" }} onClick={handleClose}>
+        <DialogActions sx={{ background: "#E3E3E3" }}>
+          <Button
+            style={{ margin: "15px", color: "#3F414D" }}
+            onClick={handleClose}
+          >
             Cancel
           </Button>
           <Button

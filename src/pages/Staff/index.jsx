@@ -4,7 +4,7 @@ import { useRecoilValue } from "recoil";
 import { staffInfoState } from "../../state/atoms";
 import { List } from "./List";
 import AddIcon from "@mui/icons-material/AddCircleOutline";
-import {postStaff} from "../../api"
+import { postStaff } from "../../api";
 import {
   MenuItem,
   Select,
@@ -17,9 +17,8 @@ import {
   DialogActions,
   DialogContent,
   DialogTitle,
+  Typography
 } from "@mui/material";
-
-
 
 export default () => {
   const [open, setOpen] = React.useState(false);
@@ -41,7 +40,7 @@ export default () => {
 
   const hadleDialog = (event) => {
     setPosition(event.target.value);
-  }
+  };
 
   const handleSubmit = async () => {
     const employee = {
@@ -65,6 +64,9 @@ export default () => {
 
   return (
     <Container>
+      <Typography sx={{ fontSize: "25px", color: "#A2A4A7" }}>
+        Staff info
+      </Typography>
       <Button
         sx={{
           color: "#BC88C9",
@@ -80,8 +82,10 @@ export default () => {
       </Button>
 
       <Dialog open={open} onClose={handleClose}>
-        <DialogTitle sx={{background: "#E3E3E3"}}>Employee Details</DialogTitle>
-        <DialogContent sx={{background: "#E3E3E3"}}>
+        <DialogTitle sx={{ background: "#E3E3E3" }}>
+          Employee Details
+        </DialogTitle>
+        <DialogContent sx={{ background: "#E3E3E3" }}>
           <form>
             <TextField
               onChange={() => {
@@ -89,7 +93,6 @@ export default () => {
               }}
               fullWidth
               id="standard-basic"
-
               name="cmployeeFirstName"
               label="Employee First Name"
               variant="standard"
@@ -144,7 +147,7 @@ export default () => {
                     width: "100%",
                     minWidth: "150px",
                     height: "30px",
-                    mt:"20px"
+                    mt: "20px",
                   }}
                 >
                   <MenuItem value={"Teacher"}>Teacher</MenuItem>
@@ -157,8 +160,11 @@ export default () => {
             </Box>
           </form>
         </DialogContent>
-        <DialogActions sx={{background: "#E3E3E3"}}>
-        <Button style={{margin: '15px', color: "#3F414D" }} onClick={handleClose}>
+        <DialogActions sx={{ background: "#E3E3E3" }}>
+          <Button
+            style={{ margin: "15px", color: "#3F414D" }}
+            onClick={handleClose}
+          >
             Cancel
           </Button>
           <Button
