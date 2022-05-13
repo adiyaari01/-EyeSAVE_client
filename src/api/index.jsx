@@ -25,6 +25,11 @@ export const getChildren = async () => {
   return body;
 };
 
+export const getRecordings = async () => {
+  const { body } = await superagent.get(`${BASE_URL}/recordings`);
+  return body;
+};
+
 export const getEscorts = async () => {
   const { body } = await superagent.get(`${BASE_URL}/escorts`);
   return body;

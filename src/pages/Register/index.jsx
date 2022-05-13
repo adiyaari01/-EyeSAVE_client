@@ -14,7 +14,6 @@ import {
 } from "@mui/material";
 import AddIcon from "@mui/icons-material/AddCircleOutline";
 import { signUp } from "../../api";
-import { CostExplorer } from "aws-sdk";
 
 const Register = () => {
   const navigate = useNavigate();

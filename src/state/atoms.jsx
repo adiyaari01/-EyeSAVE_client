@@ -1,5 +1,5 @@
 import { atom } from "recoil";
-import { getChildrenAttendance, getStaff, getEscorts, getStaffAttendance, getChildren, getEvents } from "../api"
+import { getChildrenAttendance, getStaff, getEscorts, getStaffAttendance, getChildren, getEvents, getRecordings } from "../api"
 
 
 const initializeChildrenAttendanceState = ({setSelf, onSet}) => {
@@ -12,6 +12,10 @@ const initializeStaffAttendanceState = ({setSelf, onSet}) => {
 
 const initializeChildrenInfoState = ({setSelf, onSet}) => {
     setSelf(getChildren());
+}
+
+const initializeRecordingsInfoState = ({setSelf, onSet}) => {
+    setSelf(getRecordings());
 }
 
 const initializeEscortsInfoState = ({setSelf, onSet}) => {
@@ -46,6 +50,12 @@ export const childrenInfoState = atom({
     key: "childrenInfoState",
     default: null,
     effects_UNSTABLE: [initializeChildrenInfoState]
+})
+
+export const recordingsInfoState = atom({
+    key: "recordingsInfoState",
+    default: null,
+    effects_UNSTABLE: [initializeRecordingsInfoState]
 })
 
 export const escortsInfoState = atom({
