@@ -5,6 +5,7 @@ import { escortsInfoState } from "../../state/atoms";
 import { List } from "./List";
 import AddIcon from "@mui/icons-material/AddCircleOutline";
 import { postEscort } from "../../api";
+import useMediaQuery from '@mui/material/useMediaQuery'
 import {
   Avatar,
   TextField,
@@ -17,6 +18,7 @@ import {
 } from "@mui/material";
 
 export default () => {
+  const matches = useMediaQuery('(min-width:600px)');
   const [open, setOpen] = React.useState(false);
   const [escortFirstName, setEscortFirstName] = React.useState("");
   const [escortLastName, setEscortLastName] = React.useState("");
@@ -59,7 +61,7 @@ export default () => {
 
   return (
     <Container>
-      <Typography sx={{ fontSize: "25px", color: "#A2A4A7" }}>
+      <Typography align={!matches?"center":"left"} sx={{ fontSize: "25px", color: "#A2A4A7" }}>
         Parents info
       </Typography>
       <Button

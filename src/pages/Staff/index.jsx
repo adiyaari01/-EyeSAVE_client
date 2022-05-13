@@ -5,6 +5,7 @@ import { staffInfoState } from "../../state/atoms";
 import { List } from "./List";
 import AddIcon from "@mui/icons-material/AddCircleOutline";
 import { postStaff } from "../../api";
+import useMediaQuery from '@mui/material/useMediaQuery'
 import {
   MenuItem,
   Select,
@@ -21,6 +22,7 @@ import {
 } from "@mui/material";
 
 export default () => {
+  const matches = useMediaQuery('(min-width:600px)');
   const [open, setOpen] = React.useState(false);
   const [employeeFirstName, setEmployeeFirstName] = React.useState("");
   const [employeeLastName, setEmployeeLastName] = React.useState("");
@@ -64,7 +66,7 @@ export default () => {
 
   return (
     <Container>
-      <Typography sx={{ fontSize: "25px", color: "#A2A4A7" }}>
+      <Typography align={!matches?"center":"left"} sx={{ fontSize: "25px", color: "#A2A4A7" }}>
         Staff info
       </Typography>
       <Button

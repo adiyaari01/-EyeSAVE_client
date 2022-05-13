@@ -10,8 +10,10 @@ import DialogTitle from "@mui/material/DialogTitle";
 import AddIcon from "@mui/icons-material/AddCircleOutline";
 import { Avatar, TextField, Button, Typography} from "@mui/material";
 import { postChild, postEscort } from "../../api";
+import useMediaQuery from '@mui/material/useMediaQuery'
 
 export default () => {
+  const matches = useMediaQuery('(min-width:600px)');
   const [open, setOpen] = React.useState(false);
   const [childFirstName, setChildFirstName] = React.useState("");
   const [childLastName, setChildLastName] = React.useState("");
@@ -60,7 +62,7 @@ export default () => {
 
   return (
     <Container>
-      <Typography sx={{ fontSize: "25px", color: "#A2A4A7" }}>
+      <Typography align={!matches?"center":"left"} sx={{ fontSize: "25px", color: "#A2A4A7" }}>
         Children info
       </Typography>
       <Button

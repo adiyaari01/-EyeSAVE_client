@@ -1,8 +1,9 @@
-import { Container, Stack } from "@mui/material";
+import { Container, Stack, Typography } from "@mui/material";
 import { useRecoilValue } from "recoil";
 import { childrenAttendanceState, childrenInfoState } from "../../state/atoms";
 import { staffAttendanceState } from "../../state/atoms";
 import { List } from "./List";
+import useMediaQuery from '@mui/material/useMediaQuery'
 
 const getCurrentDate = () => {
   let date_ob = new Date();
@@ -17,6 +18,7 @@ const getCurrentDate = () => {
 };
 
 export default () => {
+  const matches = useMediaQuery('(min-width:600px)');
   const childrenAttendance = useRecoilValue(childrenAttendanceState);
   const allChildren = useRecoilValue(childrenInfoState);
   const staffAttendance = useRecoilValue(staffAttendanceState);
@@ -69,6 +71,9 @@ export default () => {
 
   return (
     <Container>
+      <Typography align={!matches?"center":"left"} sx={{ fontSize: "25px", color: "#A2A4A7", m:"20px" }}>
+        Attendance
+      </Typography>
       <Stack
         direction={"row"}
         flexWrap="wrap"

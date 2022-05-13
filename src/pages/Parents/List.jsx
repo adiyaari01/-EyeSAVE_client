@@ -5,7 +5,7 @@ export function List(props) {
   const matches = useMediaQuery('(min-width:600px)');
 
   return (
-    <Stack justifyContent={matches?"center":"left"} direction={"row"} flexWrap="wrap" gap={3}>
+    <Stack justifyContent={!matches?"center":"left"} direction={"row"} flexWrap="wrap" gap={3}>
       {props.items.map((staff) => {
         // const exists
         return (
