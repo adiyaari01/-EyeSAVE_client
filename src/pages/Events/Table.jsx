@@ -9,7 +9,7 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import useMediaQuery from '@mui/material/useMediaQuery'
+import useMediaQuery from "@mui/material/useMediaQuery";
 import { useEffect } from "react";
 
 function createData(date, event, startTime, finishTime, child1, child2) {
@@ -63,27 +63,29 @@ const headCells = [
 ];
 
 function EnhancedTableHead(props) {
-  const {
-    order,
-    orderBy,
-  } = props;
-  const matches = useMediaQuery('(min-width:600px)');
+  const { order, orderBy } = props;
+  const matches = useMediaQuery("(min-width:600px)");
 
   return (
     <TableHead>
       <TableRow>
         {headCells
-        .filter(headCell => matches || ((headCell.id !== 'startTime') && (headCell.id !== 'finishTime')))
-        .map((headCell) => (
-          <TableCell
-            key={headCell.id}
-            align={"center"}
-            padding={headCell.disablePadding ? "none" : "normal"}
-            sortDirection={orderBy === headCell.id ? order : false}
-            sx={{color:"#A2A4A7", fontSize:"14px"}}
-          >{headCell.label}
-          </TableCell>
-        ))}
+          .filter(
+            (headCell) =>
+              matches ||
+              (headCell.id !== "startTime" && headCell.id !== "finishTime")
+          )
+          .map((headCell) => (
+            <TableCell
+              key={headCell.id}
+              align={"center"}
+              padding={headCell.disablePadding ? "none" : "normal"}
+              sortDirection={orderBy === headCell.id ? order : false}
+              sx={{ color: "#A2A4A7", fontSize: "14px" }}
+            >
+              {headCell.label}
+            </TableCell>
+          ))}
       </TableRow>
     </TableHead>
   );
@@ -130,8 +132,7 @@ const EnhancedTableToolbar = (props) => {
           variant="h6"
           id="tableTitle"
           component="div"
-        >
-        </Typography>
+        ></Typography>
       )}
     </Toolbar>
   );
@@ -149,7 +150,7 @@ export default function EnhancedTable({ events, children }) {
   const [dense, setDense] = React.useState(false);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
   const [rows, setRows] = React.useState([]);
-  const matches = useMediaQuery('(min-width:600px)');
+  const matches = useMediaQuery("(min-width:600px)");
 
   useEffect(() => {
     let isMount = true;
@@ -226,56 +227,116 @@ export default function EnhancedTable({ events, children }) {
   if (!rows.length) return <div>Loading..</div>;
   return (
     <div>
-        <TableContainer sx={{ mt: 5 }}>
-          <Table
-            sx={{ minWidth: 350, backgroundColor:"#3F414D"}}
-            aria-labelledby="tableTitle"
-            size={dense ? "small" : "medium"}
-          >
-            <EnhancedTableHead
-              numSelected={selected.length}
-              order={order}
-              orderBy={orderBy}
-              onSelectAllClick={handleSelectAllClick}
-              onRequestSort={handleRequestSort}
-              rowCount={rows.length}
-            />
-            <TableBody>
-              {rows.map((row, index) => {
-                const isItemSelected = isSelected(row.event);
+      <TableContainer sx={{ mt: 5 }}>
+        <Table
+          sx={{ minWidth: 350, backgroundColor: "#3F414D" }}
+          aria-labelledby="tableTitle"
+          size={dense ? "small" : "medium"}
+        >
+          <EnhancedTableHead
+            numSelected={selected.length}
+            order={order}
+            orderBy={orderBy}
+            onSelectAllClick={handleSelectAllClick}
+            onRequestSort={handleRequestSort}
+            rowCount={rows.length}
+          />
+          <TableBody>
+            {rows.map((row, index) => {
+              const isItemSelected = isSelected(row.event);
 
-                return (
-                  <TableRow 
-                    hover
-                    onClick={(event) => handleClick(event, row.event)}
-                    aria-checked={isItemSelected}
-                    tabIndex={-1}
-                    key={index}
-                    selected={isItemSelected}
-                  >
-                    
-                    <TableCell sx={{fontSize:matches?"14px":"10px", color:row.event==="Positive"?"#68B294":row.event==="Negative"?"#AD4675":"#FDCA51"}} align="center">{matches?row.event:row.event.charAt(0)}</TableCell>
-                    <TableCell sx={{fontSize:matches?"14px":"10px", color:"#A2A4A7"}} align="center">{matches?row.date:row.date.slice(5,10)}</TableCell>
-                    {matches && <TableCell sx={{fontSize:matches?"14px":"10px", color:"#A2A4A7"}} align="center">{row.startTime}</TableCell>}
-                    {matches && <TableCell sx={{fontSize:matches?"14px":"10px", color:"#A2A4A7"}} align="center">{row.finishTime}</TableCell>}
-                     <TableCell sx={{fontSize:matches?"14px":"10px", color:"#A2A4A7"}} align="center">{row.child1 ==='undefined undefined'?"":row.child1}</TableCell>
-                    <TableCell sx={{fontSize:matches?"14px":"10px", color:"#A2A4A7"}} align="center">{row.child2 ==='undefined undefined'?"":row.child2}</TableCell>
-          
-                  </TableRow>
-                );
-              })}
-              {emptyRows > 0 && (
+              return (
                 <TableRow
-                  style={{
-                    height: (dense ? 33 : 53) * emptyRows,
-                  }}
+                  hover
+                  onClick={(event) => handleClick(event, row.event)}
+                  aria-checked={isItemSelected}
+                  tabIndex={-1}
+                  key={index}
+                  selected={isItemSelected}
                 >
-                  <TableCell colSpan={6} />
+                  <TableCell
+                    sx={{
+                      fontSize: matches ? "14px" : "10px",
+                      color:
+                        row.event === "Positive"
+                          ? "#68B294"
+                          : row.event === "Negative"
+                          ? "#AD4675"
+                          : row.event === "Stranger"
+                          ? "#FDCA51"
+                          : row.event === "childLeftAlone"
+                          ? "#BDABDA"
+                          : "#FF5555"
+
+                    }}
+                    align="center"
+                  >
+                    {matches ? row.event : row.event.charAt(0)}
+                  </TableCell>
+                  <TableCell
+                    sx={{
+                      fontSize: matches ? "14px" : "10px",
+                      color: "#A2A4A7",
+                    }}
+                    align="center"
+                  >
+                    {matches ? row.date : row.date.slice(5, 10)}
+                  </TableCell>
+                  {matches && (
+                    <TableCell
+                      sx={{
+                        fontSize: matches ? "14px" : "10px",
+                        color: "#A2A4A7",
+                      }}
+                      align="center"
+                    >
+                      {row.startTime}
+                    </TableCell>
+                  )}
+                  {matches && (
+                    <TableCell
+                      sx={{
+                        fontSize: matches ? "14px" : "10px",
+                        color: "#A2A4A7",
+                      }}
+                      align="center"
+                    >
+                      {row.finishTime}
+                    </TableCell>
+                  )}
+                  <TableCell
+                    sx={{
+                      fontSize: matches ? "14px" : "10px",
+                      color: "#A2A4A7",
+                    }}
+                    align="center"
+                  >
+                    {row.child1 === "undefined undefined" ? "" : row.child1}
+                  </TableCell>
+                  <TableCell
+                    sx={{
+                      fontSize: matches ? "14px" : "10px",
+                      color: "#A2A4A7",
+                    }}
+                    align="center"
+                  >
+                    {row.child2 === "undefined undefined" ? "" : row.child2}
+                  </TableCell>
                 </TableRow>
-              )}
-            </TableBody>
-          </Table>
-        </TableContainer>
+              );
+            })}
+            {emptyRows > 0 && (
+              <TableRow
+                style={{
+                  height: (dense ? 33 : 53) * emptyRows,
+                }}
+              >
+                <TableCell colSpan={6} />
+              </TableRow>
+            )}
+          </TableBody>
+        </Table>
+      </TableContainer>
     </div>
   );
 }
