@@ -20,7 +20,7 @@ export function List(props) {
                 alt=""
               />
               <Typography >{staff._firstName} {staff._lastName}</Typography>
-              <Typography>Position: {staff._position}</Typography>
+              {/* <Typography>Position: {staff._position}</Typography> */}
               <Typography>Phone: {staff._phone}</Typography>
               <Typography>Address: {staff._address}</Typography>
               <Typography>Birthday: {staff._birthdate}</Typography>
