@@ -264,7 +264,7 @@ export default function EnhancedTable({ events, children }) {
                           ? "#AD4675"
                           : row.event === "Stranger"
                           ? "#FDCA51"
-                          : row.event === "childLeftAlone"
+                          : row.event === "Child Left Alone"
                           ? "#BDABDA"
                           : "#FF5555"
 
