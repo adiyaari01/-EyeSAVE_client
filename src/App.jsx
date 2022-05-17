@@ -24,7 +24,6 @@ import { getUserFromSessionStorage} from "./utils"
 export default () => {
   
   const isLoggedIn = !!getUserFromSessionStorage() || useRecoilValue(IsLoggedInState);
-
   return (
     <Suspense fallback={<div>Loading...</div>}>
       <Routes>
@@ -50,8 +49,8 @@ export default () => {
           <>
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
-            <Route path="/addEscort" element={<AddEscort />} />
-            <Route path="/childForm/:kindergartenId" element={<ChildRegistrationForm />} />
+            <Route path="/addEscort/:formId" element={<AddEscort />} />
+            <Route path="/childForm/:formId" element={<ChildRegistrationForm />} />
             <Route path="/" element={<Navigate to="/login" />}/>
           </>
         )}
