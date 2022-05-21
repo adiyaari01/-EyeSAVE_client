@@ -15,6 +15,7 @@ import {
   FormControl,
 } from "@mui/material";
 import MessageIcon from "@mui/icons-material/MailOutline";
+const {VITE_BASE_URL} = process.env;
 
 const Messages = () => {
   const allEscorts = useRecoilValue(escortsInfoState);
@@ -25,24 +26,32 @@ const Messages = () => {
   // filter all parents
   const handleSubmit = async () => {
     console.log("Submit", form);
+    if(!form.userId){
+      alert("Must Conain User")
+      return;
+    }
     if (form.userId == "AllParents") {
       const res = await axios({
         method: "post",
-        url: "https://eyesave-noitfications.herokuapp.com/escort/sendToMany",
+        url: `${VITE_BASE_URL}/escort/sendToMany`,
+        // url: "https://eyesave-noitfications.herokuapp.com/escort/sendToMany",
         data: {
+
           msg: form.msg,
         },
+        withCredentials: true
       });
       return;
     }
     const res = await axios({
       method: "post",
-      // url: "http://localhost:8001/escort/send",
-      url: "https://eyesave-noitfications.herokuapp.com/escort/send",
+      url: `${VITE_BASE_URL}/escort/send`,
+      // url: "https://eyesave-noitfications.herokuapp.com/escort/send",
       data: {
         userId: form.userId,
         msg: form.msg,
       },
+      withCredentials: true
     });
 
     if (res.data.success) {
@@ -50,8 +59,6 @@ const Messages = () => {
       setForm({});
     }
   };
-
-  console.log(allEscorts);
 
   const parents = allEscorts.filter((item) => {
     return item._relation === "Parent" && item._telegramID;
@@ -65,7 +72,6 @@ const Messages = () => {
   const paperStyle = {
     padding: 20,
     maxWidth: 480,
-    // height: "60vh",
     margin: "30px auto",
     backgroundColor:"#E5E5E5",
   };
@@ -94,6 +100,7 @@ const Messages = () => {
               <Select
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
+                defaultValue={"AllParents"}
                 sx={{
                   color: "#3F414D",
                   width: "100%",
@@ -129,6 +136,7 @@ const Messages = () => {
             onChange={(e) => setForm({ ...form, msg: e.target.value })}
           ></TextField>
           <Button
+            type="button"
             variant="contained"
             style={btnStyle}
             color="secondary"
