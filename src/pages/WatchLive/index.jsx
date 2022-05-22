@@ -15,29 +15,28 @@ export default () => {
         WatchLive
       </Typography>
       <Stack direction={"row"} flexWrap="wrap" gap={3} justifyContent="center">
-        {/* <video ref={videoRef}></video> */}
         <iframe
-          width={!matches ? "300" : "440"}
-          height={!matches ? "200" : "270"}
-          src="https://rtsp.me/embed/NHANEa74/"
+          width={!matches ? "200" : "380"}
+          height={!matches ? "100" : "210"}
+          src="https://rtsp.me/embed/3QrA37NE/"
           frameBorder="0"
         ></iframe>
         <iframe
-          width={!matches ? "300" : "440"}
-          height={!matches ? "200" : "270"}
-          src="https://rtsp.me/embed/NHANEa74/"
+          width={!matches ? "200" : "380"}
+          height={!matches ? "100" : "210"}
+          src="https://rtsp.me/embed/STet9n4n/"
           frameBorder="0"
         ></iframe>
         <iframe
-          width={!matches ? "300" : "440"}
-          height={!matches ? "200" : "270"}
-          src="https://rtsp.me/embed/NHANEa74/"
+          width={!matches ? "200" : "380"}
+          height={!matches ? "100" : "210"}
+          src="https://rtsp.me/embed/STet9n4n/"
           frameBorder="0"
         ></iframe>
-        <iframe
-          width={!matches ? "300" : "440"}
-          height={!matches ? "200" : "270"}
-          src="https://rtsp.me/embed/NHANEa74/"
+                <iframe
+          width={!matches ? "200" : "380"}
+          height={!matches ? "100" : "210"}
+          src="https://rtsp.me/embed/STet9n4n/"
           frameBorder="0"
         ></iframe>
         {/* <iframe width="420" height="345" src="https://www.youtube.com/embed/tgbNymZ7vqY"></iframe>
