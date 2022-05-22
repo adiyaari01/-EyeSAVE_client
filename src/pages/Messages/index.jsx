@@ -15,7 +15,7 @@ import {
   FormControl,
 } from "@mui/material";
 import MessageIcon from "@mui/icons-material/MailOutline";
-const {VITE_BASE_URL} = process.env;
+// const {VITE_BASE_URL} = process.env;
 
 const Messages = () => {
   const allEscorts = useRecoilValue(escortsInfoState);
@@ -25,7 +25,6 @@ const Messages = () => {
 
   // filter all parents
   const handleSubmit = async () => {
-    console.log("Submit", form);
     if(!form.userId){
       alert("Must Conain User")
       return;
@@ -33,25 +32,22 @@ const Messages = () => {
     if (form.userId == "AllParents") {
       const res = await axios({
         method: "post",
-        url: `${VITE_BASE_URL}/escort/sendToMany`,
-        // url: "https://eyesave-noitfications.herokuapp.com/escort/sendToMany",
+        // url: `${VITE_BASE_URL}/escort/sendToMany`,
+        url: "https://eye-save-notifications.herokuapp.com/escort/sendToMany",
         data: {
-
           msg: form.msg,
         },
-        withCredentials: true
       });
       return;
     }
     const res = await axios({
       method: "post",
-      url: `${VITE_BASE_URL}/escort/send`,
-      // url: "https://eyesave-noitfications.herokuapp.com/escort/send",
+      // url: `${VITE_BASE_URL}/escort/send`,
+      url: "https://eye-save-notifications.herokuapp.com/escort/send",
       data: {
         userId: form.userId,
         msg: form.msg,
       },
-      withCredentials: true
     });
 
     if (res.data.success) {
@@ -67,7 +63,6 @@ const Messages = () => {
   const staff = allEmployees.filter((employee) => {
     return employee._telegramID;
   });
-  console.log(staff);
 
   const paperStyle = {
     padding: 20,
@@ -109,7 +104,6 @@ const Messages = () => {
                   mt: "20px",
                 }}
                 onChange={(e) => {
-                  console.log(e.target.value);
                   setForm({ ...form, userId: e.target.value });
                 }}
               >
@@ -136,7 +130,6 @@ const Messages = () => {
             onChange={(e) => setForm({ ...form, msg: e.target.value })}
           ></TextField>
           <Button
-            type="button"
             variant="contained"
             style={btnStyle}
             color="secondary"
