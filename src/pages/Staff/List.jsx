@@ -1,16 +1,35 @@
-import { Card, Stack, Typography } from "@mui/material";
+import { Button, Card, Stack, Typography } from "@mui/material";
+import ClearIcon from '@mui/icons-material/Clear';
 import useMediaQuery from '@mui/material/useMediaQuery'
+import { deleteEmployee } from "../../api"
 
 export function List(props) {
   const matches = useMediaQuery('(min-width:600px)');
+
+  const handleDelete = (event) => {
+    deleteEmployee(event);
+    alert("Deleted successfully");
+    window.location.reload();
+  };
 
   return (
     <Stack justifyContent={!matches?"center":"left"} direction={"row"} flexWrap="wrap" gap={3}>
       {props.items.map((staff) => {
         // const exists
         return (
-          <Card key={staff._id} sx={{ width: 280, height: 280, backgroundColor: "#3F424C !important",
+          <Card key={staff._id} sx={{ width: 280, height: 280, position: 'relative', backgroundColor: "#3F424C !important",
           borderRadius : "5px !important", color:'#E3E3E3', boxShadow: 3}} >
+        <Button
+          sx={{
+            position:'absolute', 
+            top:'-3px', 
+            left:'234px',
+            color: "#BC88C9",
+          }}
+          onClick = { () => handleDelete(staff._id)}
+        >
+            <ClearIcon />
+        </Button>
             <Stack alignItems={'center'} gap={1} p={2}>
               <img
                 src={staff._imageUrl}

@@ -49,8 +49,9 @@ export const postStaff = async (newStaff) =>
   await superagent.post(`${BASE_URL}/staff`).send(newStaff);
 export const postChild = async (newChild) =>
   await superagent.post(`${BASE_URL}/children`).send(newChild);
-export const postEscort = async (newEscort) =>
+export const postEscort = async (newEscort) =>{
   await superagent.post(`${BASE_URL}/escorts`).send(newEscort);
+}
 export const postForm = async () =>
   await superagent.post(`${BASE_URL}/forms`).send();
 
@@ -67,6 +68,15 @@ export const deleteChild = async (childId) => {
   return body;
 };
 
+export const deleteEscort = async (escortId) => {
+  const { body } = await superagent.delete(`${BASE_URL}/escorts/${escortId}`);
+  return body;
+};
+
+export const deleteEmployee = async (employeeId) => {
+  const { body } = await superagent.delete(`${BASE_URL}/staff/${employeeId}`);
+  return body;
+};
 
 export const login = (email, password) => axios1({
     method: "post",

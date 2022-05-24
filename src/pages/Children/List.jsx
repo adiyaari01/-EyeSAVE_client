@@ -1,4 +1,4 @@
-import { Card, Stack, Typography,Button } from "@mui/material";
+import { Card, Stack, Typography, Button } from "@mui/material";
 import useMediaQuery from '@mui/material/useMediaQuery'
 import ClearIcon from '@mui/icons-material/Clear';
 import { deleteChild } from "../../api"
@@ -8,8 +8,8 @@ export function List(props) {
   
   const handleDelete = (event) => {
     deleteChild(event);
-    console.log(event);
-    console.log("Deleted!");
+    alert("Deleted successfully");
+    window.location.reload();
   };
 
   return (

@@ -54,6 +54,7 @@ export default () => {
     };
     await postStaff(employee);
     handleClose();
+    window.location.reload();
   };
 
   const avaterStyle = {

@@ -62,10 +62,10 @@ export default () => {
     );
   });
 
-  console.log("arrivedItems", arrived);
-  console.log("lates", lates);
-  console.log("unknow", unknow);
-  console.log("absance", absance);
+  // console.log("arrivedItems", arrived);
+  // console.log("lates", lates);
+  // console.log("unknow", unknow);
+  // console.log("absance", absance);
 
   const items =  [...unknow, ...absance, ...lates, ...arrived]
 

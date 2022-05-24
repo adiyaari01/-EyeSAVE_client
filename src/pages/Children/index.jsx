@@ -51,6 +51,7 @@ export default () => {
     await postChild(child);
     await postEscort(parent);
     handleClose();
+    window.location.reload();
   };
 
   const avaterStyle = {

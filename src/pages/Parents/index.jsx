@@ -20,10 +20,10 @@ import {
 export default () => {
   const matches = useMediaQuery('(min-width:600px)');
   const [open, setOpen] = React.useState(false);
-  const [escortFirstName, setEscortFirstName] = React.useState("");
-  const [escortLastName, setEscortLastName] = React.useState("");
-  const [escortPhoneNumber, setEscortPhoneNumber] = React.useState(0);
-  const [escortId, setEscortId] = React.useState(0);
+  const [parentFirstName, setparentFirstName] = React.useState("");
+  const [parentLastName, setparentLastName] = React.useState("");
+  const [parentPhoneNumber, setparentPhoneNumber] = React.useState(0);
+  const [parentId, setparentId] = React.useState(0);
   // const [selectedPosition, setPosition] = React.useState("");
 
   const staff = useRecoilValue(escortsInfoState);
@@ -41,14 +41,16 @@ export default () => {
   // };
 
   const handleSubmit = async () => {
-    const escort = {
-      _firstName: escortFirstName,
-      _lastName: escortLastName,
-      _id: parseInt(escortId),
-      _phone: escortPhoneNumber,
+    const parent = {
+      _firstName: parentFirstName,
+      _lastName: parentLastName,
+      _id: parseInt(parentId),
+      _phone: parentPhoneNumber,
+      _relation:"Parent"
     };
-    await postEscort(escort);
+    await postEscort(parent);
     handleClose();
+    window.location.reload();
   };
 
   const avaterStyle = {
@@ -84,24 +86,24 @@ export default () => {
           <form>
             <TextField
               onChange={() => {
-                setEscortFirstName(event.target.value);
+                setparentFirstName(event.target.value);
               }}
               fullWidth
               id="standard-basic"
-              name="cmployeeFirstName"
-              label="Escort First Name"
+              name="escortFirstName"
+              label="Parent First Name"
               variant="standard"
               placeholder="Enter escort first name"
               type={"text"}
             />
             <TextField
               onChange={() => {
-                setEscortLastName(event.target.value);
+                setparentLastName(event.target.value);
               }}
               fullWidth
               id="standard-basic"
-              name="cmployeeLastName"
-              label="Escort Last Name"
+              name="escortLastName"
+              label="Parent Last Name"
               variant="standard"
               placeholder="Enter escort lasr name"
               type={"text"}
@@ -109,18 +111,18 @@ export default () => {
             <TextField
               fullWidth
               onChange={() => {
-                setEscortId(event.target.value);
+                setparentId(event.target.value);
               }}
               id="standard-basic"
-              name="EscortId"
-              label="Escort Id"
+              name="parentId"
+              label="Parent Id"
               variant="standard"
               placeholder="Enter escort Id"
               type={"number"}
             />
             <TextField
               onChange={() => {
-                setEscortPhoneNumber(event.target.value);
+                setparentPhoneNumber(event.target.value);
               }}
               fullWidth
               id="standard-basic"

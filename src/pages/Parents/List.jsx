@@ -1,29 +1,48 @@
-import { Card, Stack, Typography } from "@mui/material";
+import { Button, Card, Stack, Typography } from "@mui/material";
+import ClearIcon from '@mui/icons-material/Clear';
 import useMediaQuery from '@mui/material/useMediaQuery'
+import { deleteEscort } from "../../api"
 
 export function List(props) {
   const matches = useMediaQuery('(min-width:600px)');
+  
+  const handleDelete = (event) => {
+    deleteEscort(event);
+    alert("Deleted successfully");
+    window.location.reload();
+  };
 
   return (
     <Stack justifyContent={!matches?"center":"left"} direction={"row"} flexWrap="wrap" gap={3}>
-      {props.items.map((staff) => {
+      {props.items.map((parent) => {
         // const exists
         return (
-          <Card key={staff._id} sx={{ width: 280, height: 280, backgroundColor: "#3F424C !important",
+          <Card key={parent._id} sx={{ width: 280, height: 280, position:'relative', backgroundColor: "#3F424C !important",
           borderRadius : "5px !important", color:'#E3E3E3', boxShadow: 3}} >
+          <Button
+            sx={{
+              position:'absolute', 
+              top:'-3px', 
+              left:'234px',
+              color: "#BC88C9",
+            }}
+            onClick = { () => handleDelete(parent._id)}
+          >
+              <ClearIcon />
+          </Button>
             <Stack alignItems={'center'} gap={1} p={2}>
               <img
-                src={staff._imageUrl}
+                src={parent._imageUrl}
                 width={80}
                 height={80}
                 style={{ borderRadius: "50%" }}
                 alt=""
               />
-              <Typography >{staff._firstName} {staff._lastName}</Typography>
-              {/* <Typography>Position: {staff._position}</Typography> */}
-              <Typography>Phone: {staff._phone}</Typography>
-              <Typography>Address: {staff._address}</Typography>
-              <Typography>Birthday: {staff._birthdate}</Typography>
+              <Typography >{parent._firstName} {parent._lastName}</Typography>
+              {/* <Typography>Position: {parent._position}</Typography> */}
+              <Typography>Phone: {parent._phone}</Typography>
+              <Typography>Address: {parent._address}</Typography>
+              <Typography>Birthday: {parent._birthdate}</Typography>
               
               </Stack>
           </Card>
