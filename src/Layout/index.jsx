@@ -22,7 +22,7 @@ const DrawerStyles = makeStyles({
   paper: { backgroundColor: "#3F424C !important" },
 });
 
-const drawerWidth = 280;
+const drawerWidth = 230;
 // memo: save cache, will not render a component that didn't change
 export default memo(() => {
   const [isOpen, setMenu] = useState(false);
@@ -97,7 +97,7 @@ const handleSettings = () => {
             },
           }}
         >
-          <LogoMenu />
+          <LogoMenu/>
           <Links />
         </Drawer>
       </Box>

@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import Logo from "../../images/logo.png";
+import Logo from "../../images/Logo.svg";
 
 export default () => {
   const navigate = useNavigate();
@@ -9,8 +9,10 @@ export default () => {
       <img
         onClick={() => navigate("/")}
         src={Logo}
-        width="250"
-        height="80"
+        // width="250"
+        // height="80"
+        width="220"
+        height="50"
         style={{ cursor: "pointer" }}
       />
     </div>
