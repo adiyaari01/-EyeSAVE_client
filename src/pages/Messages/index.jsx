@@ -3,6 +3,8 @@ import { useState } from "react";
 import axios from "axios";
 import { useRecoilValue } from "recoil";
 import { escortsInfoState, staffInfoState } from "../../state/atoms";
+import { postForm } from "../../api";
+
 import {
   Grid,
   Paper,
@@ -23,6 +25,12 @@ const Messages = () => {
 
   const [form, setForm] = useState({});
 
+
+  const handleFormsButton = (link) => {
+    setForm({ ...form, msg: link })
+    // const idForm = await postForm();
+  }
+  
   // filter all parents
   const handleSubmit = async () => {
     if(!form.userId){
@@ -37,6 +45,7 @@ const Messages = () => {
         data: {
           msg: form.msg,
         },
+        // withCredentials: true
       });
       return;
     }
@@ -48,6 +57,7 @@ const Messages = () => {
         userId: form.userId,
         msg: form.msg,
       },
+      // withCredentials: true
     });
 
     if (res.data.success) {
@@ -117,6 +127,14 @@ const Messages = () => {
                 })}
               </Select>
             </FormControl>
+          <div>
+            <input type="radio" id="html" name="fav_language" value="HTML" onClick={ () => handleFormsButton("https://eyesave.netlify.app/ChildForm/11")}></input>
+            <label for="html">Registration form</label>
+          </div>
+          <div>
+            <input type="radio" id="html" name="fav_language" value="HTML" onClick={ () => handleFormsButton("https://eyesave.netlify.app/AddEscort/111")}></input>
+            <label for="html">Escort form</label>
+          </div>
           </Box>
           <TextField
             style={fieldStyle}
