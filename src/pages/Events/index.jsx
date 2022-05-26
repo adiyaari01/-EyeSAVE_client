@@ -172,10 +172,10 @@ export default () => {
             <MenuItem value={"positiveToday"}>Positive Today</MenuItem>
             <MenuItem value={"stranger"}>Stranger</MenuItem>
             <MenuItem value={"strangerToday"}>Stranger Today</MenuItem>
-            <MenuItem value={"childeAlone"}>childeAlone</MenuItem>
-            <MenuItem value={"childeAloneToday"}>childe Alone Today</MenuItem>
-            <MenuItem value={"childeLeftAlone"}>childeLeftAlone</MenuItem>
-            <MenuItem value={"childeLeftAloneToday"}>childe Left Alone Today</MenuItem>
+            <MenuItem value={"childAlone"}>Child Alone</MenuItem>
+            <MenuItem value={"childAloneToday"}>Child Alone Today</MenuItem>
+            <MenuItem value={"childLeftAlone"}>Child Left Alone</MenuItem>
+            <MenuItem value={"childLeftAloneToday"}>Child Left Alone Today</MenuItem>
           </Select>
         </FormControl>
       </Box>
