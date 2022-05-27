@@ -1,8 +1,39 @@
+import * as React from "react";
 import { Container, Paper } from "@mui/material";
 import FormSteps from "../../components/forms/FormSteps";
 import { AppProvider } from "../../context";
+import { useEffect, } from "react";
+import {useLocation} from "react-router-dom";
+import { getFormById } from "../../api"
 
-export default () => (
+export default () => {
+  const [isLoading, toggleIsLoading] = React.useState(true);
+  const [requestError, setRequestError] = React.useState("");
+  const location = useLocation();
+
+  useEffect(() => {
+    const formId = location.pathname.split("/").at(-1); 
+    console.log('formId', formId); // TODO: remove log
+    const fetchData = () => {
+      getFormById(formId).then((res) => {
+      }).catch((err) => {
+        setRequestError(`Error to find form, ${err?.message || ""}`);
+      }).finally(() => {
+        toggleIsLoading(false);  
+      })
+    }
+    fetchData();
+  },[]);
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (requestError) {
+    return <div>{requestError}</div>;
+  }
+
+  return (
   <AppProvider>
     <Container component="main" maxWidth="lg" sx={{ mb: 4, /*color:'#3F424C'*/}}>
       <Paper 
@@ -14,4 +45,4 @@ export default () => (
       </Paper>
     </Container>
   </AppProvider>
-);
+)};

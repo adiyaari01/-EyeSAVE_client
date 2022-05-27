@@ -17,9 +17,9 @@ const getDateAndTime = () => {
 
   let time = hour + ":" + minutes;
   let date = year + "-" + month + "-" + day;
+  
   // return json object of date in YYYY-MM-DD format and time in HH:MM format 
   return ({ time: time, date:date });    
-  // return year + "-" + month + "-" + day;
 };
 
 export function List(props) {

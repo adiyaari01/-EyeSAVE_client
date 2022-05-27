@@ -13,7 +13,7 @@ export default () => {
         // height="80"
         width="220"
         height="50"
-        style={{ cursor: "pointer" }}
+        style={{ cursor: "pointer", paddingTop: "12px"}}
       />
     </div>
   );

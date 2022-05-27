@@ -18,6 +18,8 @@ import {
 } from "@mui/material";
 import MessageIcon from "@mui/icons-material/MailOutline";
 // const {VITE_BASE_URL} = process.env;
+const REGISTRATION_FORM = "https://eyesave.netlify.app/ChildForm/";
+const ADD_ESCORT_FORM = "https://eyesave.netlify.app/AddEscort/";
 
 const Messages = () => {
   const allEscorts = useRecoilValue(escortsInfoState);
@@ -119,20 +121,21 @@ const Messages = () => {
               >
                 <MenuItem value={"AllParents"}>All Parents</MenuItem>
                 {parents.map((parent, i) => {
+                  const parentFullName = `${parent._firstName} ${parent._lastName}`;
                   return (
                     <MenuItem value={parent._telegramID} key={i}>
-                      {parent._firstName} {parent._lastName}
+                      {parentFullName}
                     </MenuItem>
                   );
                 })}
               </Select>
             </FormControl>
           <div>
-            <input type="radio" id="html" name="fav_language" value="HTML" onClick={ () => handleFormsButton("https://eyesave.netlify.app/ChildForm/")}></input>
+            <input type="radio" id="html" name="fav_language" value="HTML" onClick={ () => handleFormsButton(REGISTRATION_FORM)}></input>
             <label for="html">Registration form</label>
           </div>
           <div>
-            <input type="radio" id="html" name="fav_language" value="HTML" onClick={ () => handleFormsButton("https://eyesave.netlify.app/AddEscort/")}></input>
+            <input type="radio" id="html" name="fav_language" value="HTML" onClick={ () => handleFormsButton(ADD_ESCORT_FORM)}></input>
             <label for="html">Escort form</label>
           </div>
           </Box>
