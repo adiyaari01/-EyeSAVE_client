@@ -26,14 +26,14 @@ const Messages = () => {
   const [form, setForm] = useState({});
 
 
-  const handleFormsButton = (link) => {
-    setForm({ ...form, msg: link })
-    // const idForm = await postForm();
+  const handleFormsButton = async (link) => {
+    const idForm = await postForm();
+    setForm({ ...form, msg: `${link}${idForm.body.formId}` })
   }
   
   // filter all parents
   const handleSubmit = async () => {
-    if(!form.userId){
+    if(!form.userId){ 
       alert("Must Conain User")
       return;
     }
@@ -45,7 +45,7 @@ const Messages = () => {
         data: {
           msg: form.msg,
         },
-        // withCredentials: true
+        withCredentials: true
       });
       return;
     }
@@ -57,7 +57,7 @@ const Messages = () => {
         userId: form.userId,
         msg: form.msg,
       },
-      // withCredentials: true
+      withCredentials: true
     });
 
     if (res.data.success) {
@@ -128,11 +128,11 @@ const Messages = () => {
               </Select>
             </FormControl>
           <div>
-            <input type="radio" id="html" name="fav_language" value="HTML" onClick={ () => handleFormsButton("https://eyesave.netlify.app/ChildForm/11")}></input>
+            <input type="radio" id="html" name="fav_language" value="HTML" onClick={ () => handleFormsButton("https://eyesave.netlify.app/ChildForm/")}></input>
             <label for="html">Registration form</label>
           </div>
           <div>
-            <input type="radio" id="html" name="fav_language" value="HTML" onClick={ () => handleFormsButton("https://eyesave.netlify.app/AddEscort/111")}></input>
+            <input type="radio" id="html" name="fav_language" value="HTML" onClick={ () => handleFormsButton("https://eyesave.netlify.app/AddEscort/")}></input>
             <label for="html">Escort form</label>
           </div>
           </Box>

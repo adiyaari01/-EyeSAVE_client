@@ -45,19 +45,28 @@ export const getEvents = async () => {
   return body;
 };
 
+export const getFormById = async (formId) => {
+  const { body } = await superagent.get(`${BASE_URL}/forms/${formId}`);
+  return body;
+};
+
 export const postStaff = async (newStaff) =>
   await superagent.post(`${BASE_URL}/staff`).send(newStaff);
 export const postChild = async (newChild) =>
   await superagent.post(`${BASE_URL}/children`).send(newChild);
+export const postChildAttendance = async (attendance) =>
+  await superagent.post(`${BASE_URL}/childrenAttendance`).send(attendance);
 export const postEscort = async (newEscort) =>{
   await superagent.post(`${BASE_URL}/escorts`).send(newEscort);
 }
 export const postForm = async () =>
   await superagent.post(`${BASE_URL}/forms`).send();
 
-  export const updateChild = async (updateChild, childId) =>
+export const updateChild = async (updateChild, childId) =>
   await superagent.put(`${BASE_URL}/children/${childId}`).send(updateChild);
-
+export const updateChildAttendanceByDateAndChildId = async (date,childId,attendance) => {
+    await superagent.put(`${BASE_URL}/childrenAttendance/${date}/children/${childId}`).send(attendance);
+};
 export const updateSettings = async (settings) =>
 {
   return await superagent.put(`${BASE_URL}/settings/${settings._id}`).send(settings);
