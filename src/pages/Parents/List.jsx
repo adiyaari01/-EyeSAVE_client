@@ -38,8 +38,9 @@ export function List(props) {
                 style={{ borderRadius: "50%" }}
                 alt=""
               />
-              <Typography >{parent._firstName} {parent._lastName}</Typography>
-              {/* <Typography>Position: {parent._position}</Typography> */}
+              {/* <Typography sx={{fontWeight: 'bold'}} >{parent._firstName} {parent._lastName}</Typography> */}
+              <Typography>{parent._firstName} {parent._lastName}</Typography>
+              <Typography>Relation: {parent?._relation}</Typography>
               <Typography>Phone: {parent._phone}</Typography>
               <Typography>Address: {parent._address}</Typography>
               <Typography>Birthday: {parent._birthdate}</Typography>

@@ -5,6 +5,7 @@ import { AppProvider } from "../../context";
 import { useEffect, } from "react";
 import {useLocation} from "react-router-dom";
 import { getFormById } from "../../api"
+import "../../styles/index.css"
 
 export default () => {
   const [isLoading, toggleIsLoading] = React.useState(true);
@@ -26,7 +27,7 @@ export default () => {
   },[]);
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <div className="loader"></div>;
   }
 
   if (requestError) {

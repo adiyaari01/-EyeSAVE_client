@@ -4,8 +4,10 @@ import axios from "axios";
 import { useRecoilValue } from "recoil";
 import { escortsInfoState, staffInfoState } from "../../state/atoms";
 import { postForm } from "../../api";
+import "./styles.css"
 
 import {
+  Typography,
   Grid,
   Paper,
   Avatar,
@@ -96,6 +98,12 @@ const Messages = () => {
 
   return (
     <div>
+      <Typography
+        sx={{ fontSize: "25px", color: "#A2A4A7", m: "20px" }}
+        align={"left"}
+      >
+        Messages
+      </Typography>
       <Grid align="center">
         <Paper elevation={10} style={paperStyle}>
           <Avatar style={avaterStyle}>
@@ -130,14 +138,17 @@ const Messages = () => {
                 })}
               </Select>
             </FormControl>
-          <div>
+            <div>
+            <div className="left">
             <input type="radio" id="html" name="fav_language" value="HTML" onClick={ () => handleFormsButton(REGISTRATION_FORM)}></input>
             <label for="html">Registration form</label>
           </div>
-          <div>
+          <div  className="left">
             <input type="radio" id="html" name="fav_language" value="HTML" onClick={ () => handleFormsButton(ADD_ESCORT_FORM)}></input>
             <label for="html">Escort form</label>
           </div>
+            </div>
+          
           </Box>
           <TextField
             style={fieldStyle}

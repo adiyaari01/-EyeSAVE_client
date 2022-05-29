@@ -44,7 +44,7 @@ export default memo(() => {
             classes={cardClasses}
             onClick={() => navigate("/parents")}
           >
-            <CardHeader sx={{ color: "#c483d9" }} title="Parents Info" />
+            <CardHeader sx={{ color: "#c483d9" }} title="Escorts Info" />
             <CardContent>
               <StaffIcon sx={{ fontSize: "100px" }} />
             </CardContent>

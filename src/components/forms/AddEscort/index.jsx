@@ -5,6 +5,7 @@ import { updateChild, postEscort } from "../../../api";
 import { useEffect } from "react";
 import {useLocation} from "react-router-dom";
 import { getFormById } from "../../../api";
+import "../../../styles/index.css"
 
 export default () => {
   const [firstName, setFirstName] = React.useState("");
@@ -66,7 +67,7 @@ export default () => {
   };
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <div className="load"></div>;
   }
 
   if (requestError) {

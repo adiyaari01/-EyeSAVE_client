@@ -28,7 +28,7 @@ export default () => {
   // });
   return (
     <Container>
-      <Typography sx={{ fontSize:"25px", color: "#A2A4A7", m:'20px'}} align={"center"}>
+      <Typography sx={{ fontSize:"25px", color: "#A2A4A7", m:'20px'}} align={"left"}>
         Recordings
       </Typography>
       <Stack direction={"row"} flexWrap="wrap" gap={3} justifyContent="center">

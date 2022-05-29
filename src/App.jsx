@@ -20,12 +20,13 @@ import Messages from "./pages/Messages"
 import Info from "./pages/Info"
 import Settings from "./pages/Settings"
 import { getUserFromSessionStorage} from "./utils"
+import "../src/styles/index.css"
 
 export default () => {
   
   const isLoggedIn = !!getUserFromSessionStorage() || useRecoilValue(IsLoggedInState);
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={<div className="loader"></div>}>
       <Routes>
         {isLoggedIn ? (
           <>

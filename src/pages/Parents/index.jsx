@@ -1,11 +1,13 @@
 import * as React from "react";
 import { Container, Stack } from "@mui/material";
 import { useRecoilValue } from "recoil";
+import {useNavigate} from 'react-router-dom'
 import { escortsInfoState } from "../../state/atoms";
 import { List } from "./List";
 import AddIcon from "@mui/icons-material/AddCircleOutline";
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { postEscort } from "../../api";
-import useMediaQuery from '@mui/material/useMediaQuery'
+import useMediaQuery from "@mui/material/useMediaQuery";
 import {
   Avatar,
   TextField,
@@ -14,18 +16,17 @@ import {
   DialogActions,
   DialogContent,
   DialogTitle,
-  Typography
+  Typography,
 } from "@mui/material";
 
 export default () => {
-  const matches = useMediaQuery('(min-width:600px)');
+  const matches = useMediaQuery("(min-width:600px)");
+  const navigate = useNavigate(); 
   const [open, setOpen] = React.useState(false);
   const [parentFirstName, setparentFirstName] = React.useState("");
   const [parentLastName, setparentLastName] = React.useState("");
   const [parentPhoneNumber, setparentPhoneNumber] = React.useState(0);
   const [parentId, setparentId] = React.useState(0);
-  // const [selectedPosition, setPosition] = React.useState("");
-
   const staff = useRecoilValue(escortsInfoState);
 
   const handleClickOpen = () => {
@@ -46,7 +47,7 @@ export default () => {
       _lastName: parentLastName,
       _id: parseInt(parentId),
       _phone: parentPhoneNumber,
-      _relation:"Parent"
+      _relation: "Parent",
     };
     await postEscort(parent);
     handleClose();
@@ -63,8 +64,21 @@ export default () => {
 
   return (
     <Container>
-      <Typography align={!matches?"center":"left"} sx={{ fontSize: "25px", color: "#A2A4A7" }}>
-        Parents info
+      <ArrowBackIcon
+        sx={{
+          color: "#BC88C9",
+          // display: "flex",
+          // justifyContent: "center",
+          // width: "100%",
+        }}
+        style={{ cursor: "pointer"}}
+        onClick={() => navigate("/info")}
+      ></ArrowBackIcon>
+      <Typography
+        align={!matches ? "center" : "left"}
+        sx={{ fontSize: "25px", color: "#A2A4A7" }}
+      >
+        Escorts info
       </Typography>
       <Button
         sx={{

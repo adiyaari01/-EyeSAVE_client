@@ -1,11 +1,13 @@
 import * as React from "react";
 import { Container, Stack } from "@mui/material";
 import { useRecoilValue } from "recoil";
+import { useNavigate } from "react-router-dom";
 import { staffInfoState } from "../../state/atoms";
 import { List } from "./List";
 import AddIcon from "@mui/icons-material/AddCircleOutline";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { postStaff } from "../../api";
-import useMediaQuery from '@mui/material/useMediaQuery'
+import useMediaQuery from "@mui/material/useMediaQuery";
 import {
   MenuItem,
   Select,
@@ -18,11 +20,12 @@ import {
   DialogActions,
   DialogContent,
   DialogTitle,
-  Typography
+  Typography,
 } from "@mui/material";
 
 export default () => {
-  const matches = useMediaQuery('(min-width:600px)');
+  const matches = useMediaQuery("(min-width:600px)");
+  const navigate = useNavigate();
   const [open, setOpen] = React.useState(false);
   const [employeeFirstName, setEmployeeFirstName] = React.useState("");
   const [employeeLastName, setEmployeeLastName] = React.useState("");
@@ -67,7 +70,17 @@ export default () => {
 
   return (
     <Container>
-      <Typography align={!matches?"center":"left"} sx={{ fontSize: "25px", color: "#A2A4A7" }}>
+      <ArrowBackIcon
+        sx={{
+          color: "#BC88C9",
+        }}
+        style={{ cursor: "pointer" }}
+        onClick={() => navigate("/info")}
+      ></ArrowBackIcon>
+      <Typography
+        align={!matches ? "center" : "left"}
+        sx={{ fontSize: "25px", color: "#A2A4A7" }}
+      >
         Staff info
       </Typography>
       <Button

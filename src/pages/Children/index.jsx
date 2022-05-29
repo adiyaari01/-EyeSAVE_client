@@ -1,6 +1,7 @@
 import * as React from "react";
 import { Container, Stack } from "@mui/material";
 import { useRecoilValue } from "recoil";
+import { useNavigate } from "react-router-dom";
 import { childrenInfoState } from "../../state/atoms";
 import { List } from "./List";
 import Dialog from "@mui/material/Dialog";
@@ -8,12 +9,14 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import AddIcon from "@mui/icons-material/AddCircleOutline";
-import { Avatar, TextField, Button, Typography} from "@mui/material";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import { Avatar, TextField, Button, Typography } from "@mui/material";
 import { postChild, postEscort } from "../../api";
-import useMediaQuery from '@mui/material/useMediaQuery'
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 export default () => {
-  const matches = useMediaQuery('(min-width:600px)');
+  const matches = useMediaQuery("(min-width:600px)");
+  const navigate = useNavigate();
   const [open, setOpen] = React.useState(false);
   const [childFirstName, setChildFirstName] = React.useState("");
   const [childLastName, setChildLastName] = React.useState("");
@@ -63,7 +66,17 @@ export default () => {
 
   return (
     <Container>
-      <Typography align={!matches?"center":"left"} sx={{ fontSize: "25px", color: "#A2A4A7" }}>
+      <ArrowBackIcon
+        sx={{
+          color: "#BC88C9",
+        }}
+        style={{ cursor: "pointer" }}
+        onClick={() => navigate("/info")}
+      ></ArrowBackIcon>
+      <Typography
+        align={!matches ? "center" : "left"}
+        sx={{ fontSize: "25px", color: "#A2A4A7" }}
+      >
         Children info
       </Typography>
       <Button
@@ -172,8 +185,11 @@ export default () => {
             />
           </form>
         </DialogContent>
-        <DialogActions sx={{background: "#E3E3E3" }}>
-          <Button style={{margin: '15px', color: "#3F414D" }} onClick={handleClose}>
+        <DialogActions sx={{ background: "#E3E3E3" }}>
+          <Button
+            style={{ margin: "15px", color: "#3F414D" }}
+            onClick={handleClose}
+          >
             Cancel
           </Button>
           <Button
