@@ -33,13 +33,9 @@ export default () => {
       </Typography>
       <Stack direction={"row"} flexWrap="wrap" gap={3} justifyContent="center">
         {urlsList.map((url, index) => (
-          <iframe
-            key={index}
-            width={!matches?"310":"410"}
-            height={!matches?"200":"230"}
-            src={url}
-            frameBorder="0"
-          ></iframe>
+          <video width={!matches?"310":"410"} height={!matches?"200":"230"} controls controlsList="nodownload">
+            <source src={url} type="video/mp4"></source>
+          </video>
         ))}
       </Stack>
     </Container>
