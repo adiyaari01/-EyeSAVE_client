@@ -12,8 +12,8 @@ const getDateAndTime = () => {
   // current year
   let year = date_ob.getFullYear();
 
-  let minutes = date_ob.getMinutes();
-  let hour = date_ob.getHours();
+  let minutes = date_ob.getMinutes()<10?"0"+date_ob.getMinutes():date_ob.getMinutes();
+  let hour = date_ob.getHours()<10?"0"+date_ob.getHours():date_ob.getHours();
 
   let time = hour + ":" + minutes;
   let date = year + "-" + month + "-" + day;
