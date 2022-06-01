@@ -79,9 +79,9 @@ const Messages = () => {
   });
 
   const paperStyle = {
-    padding: 20,
+    padding: 10,
     maxWidth: 480,
-    margin: "30px auto",
+    margin: "20px auto",
     backgroundColor:"#E5E5E5",
   };
   const avaterStyle = {
@@ -121,7 +121,6 @@ const Messages = () => {
                   width: "100%",
                   minWidth: "150px",
                   height: "30px",
-                  mt: "20px",
                 }}
                 onChange={(e) => {
                   setForm({ ...form, userId: e.target.value });
