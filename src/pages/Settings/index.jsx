@@ -20,6 +20,7 @@ import { TimePicker, MuiPickersUtilsProvider } from "@material-ui/pickers";
 import { updateSettings } from "../../api";
 import SettingsIcon from "@mui/icons-material/Settings";
 import { getUserFromSessionStorage } from "../../utils";
+import { alpha } from "@material-ui/core/styles";
 
 export default memo(() => {
   const user = getUserFromSessionStorage();
@@ -74,10 +75,21 @@ export default memo(() => {
   };
 
   const handleSubmitMorning = async () => {
+    const hourStart = startMorning._i.getHours();
+    const minutesStart =
+      startMorning._i.getMinutes() < 10
+        ? "0" + startMorning._i.getMinutes()
+        : startMorning._i.getMinutes();
+    const hourEnd = endMorning._i.getHours();
+    const minutesEnd =
+      endMorning._i.getMinutes() < 10
+        ? "0" + endMorning._i.getMinutes()
+        : endMorning._i.getMinutes();
+
     const settings = {
       _id: "6267f40027a29b9d4294a708",
-      _startMorning: `${startMorning.getHours()}:${startMorning.getMinutes()}`,
-      _endMorning: `${endMorning.getHours()}:${endMorning.getMinutes()}`,
+      _startMorning: `${hourStart}:${minutesStart}`,
+      _endMorning: `${hourEnd}:${minutesEnd}`,
     };
     console.log("settings", settings);
     await updateSettings(settings);
@@ -86,22 +98,46 @@ export default memo(() => {
   };
 
   const handleSubmitYard = async () => {
+    const hourStart = startYard._i.getHours();
+    const minutesStart =
+      startYard._i.getMinutes() < 10
+        ? "0" + startYard._i.getMinutes()
+        : startYard._i.getMinutes();
+    const hourEnd = endYard._i.getHours();
+    const minutesEnd =
+      endYard._i.getMinutes() < 10
+        ? "0" + endYard._i.getMinutes()
+        : endYard._i.getMinutes();
+
     const settings = {
       _id: "6267f40027a29b9d4294a708",
-      _startYard: `${startYard.getHours()}:${startYard.getMinutes()}`,
-      _endYard: `${endYard.getHours()}:${endYard.getMinutes()}`,
+      _startYard: `${hourStart}:${minutesStart}`,
+      _endYard: `${hourEnd}:${minutesEnd}`,
     };
+    console.log("settings", settings);
     await updateSettings(settings);
     alert("Updated successfully");
     handleCloseYard();
   };
 
   const handleSubmitPickUp = async () => {
+    const hourStart = startPickUp._i.getHours();
+    const minutesStart =
+      startPickUp._i.getMinutes() < 10
+        ? "0" + startPickUp._i.getMinutes()
+        : startPickUp._i.getMinutes();
+    const hourEnd = endPickUp._i.getHours();
+    const minutesEnd =
+      endPickUp._i.getMinutes() < 10
+        ? "0" + endPickUp._i.getMinutes()
+        : endPickUp._i.getMinutes();
+
     const settings = {
       _id: "6267f40027a29b9d4294a708",
-      _startPickUp: `${startPickUp.getHours()}:${startPickUp.getMinutes()}`,
-      _endPickUp: `${endPickUp.getHours()}:${endPickUp.getMinutes()}`,
+      _startPickUp: `${hourStart}:${minutesStart}`,
+      _endPickUp: `${hourEnd}:${minutesEnd}`,
     };
+    console.log("settings", settings);
     await updateSettings(settings);
     alert("message send");
     handleClosePickUp();
@@ -120,11 +156,6 @@ export default memo(() => {
     await updateSettings(settings);
     alert("message send");
     handleCloseCamera();
-  };
-
-  const avaterStyle = {
-    backgroundColor: "#BC88C9",
-    justifyContent: "center",
   };
 
   const btnStyle = {
@@ -152,9 +183,6 @@ export default memo(() => {
 
         <Dialog open={openMorning} onClose={handleCloseMorning}>
           <DialogContent sx={{ background: "#E3E3E3" }}>
-            {/* <Avatar style={avaterStyle}>
-            <SettingsIcon />
-          </Avatar> */}
             <form>
               <MuiPickersUtilsProvider utils={DateMomentUtils}>
                 <div align="left">

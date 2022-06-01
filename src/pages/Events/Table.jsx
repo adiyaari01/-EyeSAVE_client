@@ -224,7 +224,7 @@ export default function EnhancedTable({ events, children }) {
   const emptyRows =
     page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
 
-  if (!rows.length) return <div>Loading..</div>;
+  if (!rows.length) return <div>No Data</div>;
   return (
     <div>
       <TableContainer sx={{ mt: 5 }}>

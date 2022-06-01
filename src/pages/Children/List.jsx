@@ -37,9 +37,12 @@ export function List(props) {
                 style={{ borderRadius: "50%" }}
                 alt=""
               />
-              <Typography >{children._firstName} {children._lastName}</Typography>
-              <Typography>Address:{children._address}</Typography>
+              <div justifyContent="left">
+              <Typography >Name: {children._firstName} {children._lastName}</Typography>
+              <Typography>Address: {children._address}</Typography>
               <Typography>Birthday: {children._birthdate}</Typography>
+              </div>
+
               
               </Stack>
           </Card>

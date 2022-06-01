@@ -168,7 +168,6 @@ export default () => {
                 >
                   <MenuItem value={"Teacher"}>Teacher</MenuItem>
                   <MenuItem value={"Assistant"}>Assistant</MenuItem>
-                  <MenuItem value={"House keeper"}>House keeper</MenuItem>
                   <MenuItem value={"Manager"}>Manager</MenuItem>
                   <MenuItem value={"Other"}>Other</MenuItem>
                 </Select>
