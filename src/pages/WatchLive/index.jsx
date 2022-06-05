@@ -15,27 +15,27 @@ export default () => {
         WatchLive
       </Typography>
       <Stack direction={"row"} flexWrap="wrap" gap={3} justifyContent="center">
-        <iframe
-          width={!matches ? "200" : "380"}
-          height={!matches ? "100" : "210"}
+        <iframe 
+          width={!matches ? "310" : "380"}
+          height={!matches ? "200" : "210"}
           src="https://rtsp.me/embed/KrKTetfh/"
           frameBorder="0"
         ></iframe>
         <iframe
-          width={!matches ? "200" : "380"}
-          height={!matches ? "100" : "210"}
+          width={!matches ? "310" : "380"}
+          height={!matches ? "200" : "210"}
           src="https://rtsp.me/embed/4inkHk49/"
           frameBorder="0"
         ></iframe>
         <iframe
-          width={!matches ? "200" : "380"}
-          height={!matches ? "100" : "210"}
+          width={!matches ? "310" : "380"}
+          height={!matches ? "200" : "210"}
           src="https://rtsp.me/embed/4inkHk49/"
           frameBorder="0"
         ></iframe>
                 <iframe
-          width={!matches ? "200" : "380"}
-          height={!matches ? "100" : "210"}
+          width={!matches ? "310" : "380"}
+          height={!matches ? "200" : "210"}
           src="https://rtsp.me/embed/KrKTetfh/"
           frameBorder="0"
         ></iframe>
