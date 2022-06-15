@@ -56,18 +56,18 @@ export function List(props) {
   return (
     <Stack direction={"row"} flexWrap="wrap" gap={3} justifyContent={!matches?"center":"left"}>
       {props.items.map((children) => {
-        // const exists
 
         const arrived = children.report?._arrivalTime;
         const left = children.report?._departureTime;
-        const absance = children.report?._absance;
+        const absence = children.report?._absence;
         const late = children.report?._childDelay;
-        // console.log(children.report?._absance);
+
         return (
           <Card key={children._id} sx={{ width: 160, height: 180, position:'relative', backgroundColor: "#3F424C !important", color: "#E3E3E3 !important",
           borderRadius : "5px !important", boxShadow: 3}} >
-            {!arrived && !left && !absance && !late && <div className='dot' style={{width:15,height:15, borderRadius:'50%', background:"#FAC852", position:'absolute', top:'5px', left:'5px'}}></div>}
-            {late && late!=='false' && <Typography fontSize='14px' sx={{color:'#5FEBDC', position:'absolute', top:'5px', left:'5px'}}>Delay</Typography>}
+            {!arrived && !left && !absence && !late && <div className='dot' style={{width:15,height:15, borderRadius:'50%', background:"#FAC852", position:'absolute', top:'5px', left:'5px'}}></div>}
+            {late && late!=='false' && <Typography fontSize='14px' sx={{color:'#5FEBDC', position:'absolute', top:'1px', left:'5px'}}>Delay</Typography>}
+            {absence && absence!=='false' && <Typography fontSize='14px' sx={{color:'#BC88C9', position:'absolute', top:'1px', left:'5px'}}>Absence</Typography>}
             <Stack sx={{color: "#E3E3E3"}} alignItems={'center'} gap={1} p={2}>
               <img
                 src={children._imageUrl}

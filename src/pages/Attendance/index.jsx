@@ -26,10 +26,7 @@ export default () => {
   const todayReports = childrenAttendance.filter(
     (report) => report._date === getCurrentDate()
   );
-  console.log("todayReports", todayReports);
-
-  console.log(childrenAttendance);
-  console.log(allChildren);
+ 
   const chldrenWithReports = allChildren.map((child) => {
     const attendance = todayReports.find((r) => r._childId === child._id);
     return { ...child, report: attendance };
@@ -43,13 +40,8 @@ export default () => {
     (child) => child.report?._childDelay === true && !child.report?._arrivalTime
   );
 
-  const absance = allChildren.filter((child) =>
-    childrenAttendance.find((attendance) => {
-      const currentChild = attendance._childId === child._id;
-      const today = attendance._date === getCurrentDate();
-      const absance = attendance._absence && !attendance._arrivalTime;
-      return currentChild && today && absance;
-    })
+  const absence = chldrenWithReports.filter(
+    (child) => child.report?._absence === true && !child.report?._arrivalTime
   );
 
   const unknow = allChildren.filter((child) => {
@@ -62,12 +54,9 @@ export default () => {
     );
   });
 
-  // console.log("arrivedItems", arrived);
-  // console.log("lates", lates);
-  // console.log("unknow", unknow);
-  // console.log("absance", absance);
+  console.log("absence", absence);
 
-  const items =  [...unknow, ...absance, ...lates, ...arrived]
+  const items =  [...unknow, ...absence, ...lates, ...arrived]
 
   return (
     <Container>
