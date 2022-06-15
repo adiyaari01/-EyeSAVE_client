@@ -50,6 +50,11 @@ export const getFormById = async (formId) => {
   return body;
 };
 
+export const getSettingsById = async (settingsId) => {
+  const { body } = await superagent.get(`${BASE_URL}/settings/${settingsId}`);
+  return body;
+};
+
 export const postStaff = async (newStaff) =>
   await superagent.post(`${BASE_URL}/staff`).send(newStaff);
 export const postChild = async (newChild) =>
