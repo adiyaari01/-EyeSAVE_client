@@ -63,8 +63,8 @@ export function List(props) {
                 <Typography>
                   Name: {children._firstName} {children._lastName}
                 </Typography>
-                <Typography>Address: {children._address}</Typography>
-                <Typography>Birthday: {children._birthdate}</Typography>
+                { children?._address && <Typography>Address: {children._address}</Typography>}
+                { children._birthdate && <Typography>Birthday: {children._birthdate}</Typography>}
               </div>
             </Stack>
           </Card>
