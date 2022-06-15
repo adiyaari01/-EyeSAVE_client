@@ -14,7 +14,7 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import { makeStyles } from "@mui/styles";
 import { Box, Stack } from "@mui/material";
 import { removeUserFromSessionStorage } from "../utils";
-import {IsLoggedInState} from "../state/atoms";
+import { IsLoggedInState } from "../state/atoms";
 
 import "./styles.css";
 
