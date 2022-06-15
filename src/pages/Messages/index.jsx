@@ -41,18 +41,6 @@ const Messages = () => {
       alert("Must Conain User")
       return;
     }
-    if (form.userId == "AllParents") {
-      const res = await axios({
-        method: "post",
-        // url: `${VITE_BASE_URL}/escort/sendToMany`,
-        url: "https://eye-save-notifications.herokuapp.com/escort/sendToMany",
-        data: {
-          msg: form.msg,
-        },
-        withCredentials: true
-      });
-      return;
-    }
     const res = await axios({
       method: "post",
       // url: `${VITE_BASE_URL}/escort/send`,
@@ -115,7 +103,7 @@ const Messages = () => {
               <Select
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
-                defaultValue={"AllParents"}
+                defaultValue={"Choose"}
                 sx={{
                   color: "#3F414D",
                   width: "100%",
@@ -126,7 +114,7 @@ const Messages = () => {
                   setForm({ ...form, userId: e.target.value });
                 }}
               >
-                <MenuItem value={"AllParents"}>All Parents</MenuItem>
+                <MenuItem value={"Choose"}>Choose</MenuItem>
                 {parents.map((parent, i) => {
                   const parentFullName = `${parent._firstName} ${parent._lastName}`;
                   return (
