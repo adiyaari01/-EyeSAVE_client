@@ -20,8 +20,12 @@ export default () => {
 
   const baseSelectVideo = "https://eyesave.s3.eu-central-1.amazonaws.com/";
   // console.log(allRecordings)
-  const urlsList = allRecordings.data.map((item) => {
-    return baseSelectVideo + item.Key;
+  const recordingList = allRecordings.data.map((item, index) => {
+    const recording = {
+      url: baseSelectVideo + item.Key,
+      date: item.Key.substring(0,item.Key.length-6),
+    }
+    return recording;
   });
   // const downloadList = largeRecordings.data.map((item) => {
   //   return baseSelectVideo + item.Key
@@ -32,10 +36,13 @@ export default () => {
         Recordings
       </Typography>
       <Stack direction={"row"} flexWrap="wrap" gap={3} justifyContent="center">
-        {urlsList.map((url, index) => (
+        {recordingList.map((record, index) => (
+          <div>
+          <Typography sx={{ fontSize:"15px", color: "#A2A4A7", m:'10px'}} align={!matches?"center":"left"}>{record.date}</Typography>
           <video width={!matches?"310":"410"} height={!matches?"200":"230"} controls controlsList="nodownload">
-            <source src={url} type="video/mp4"></source>
+            <source src={record.url} type="video/mp4"></source>
           </video>
+          </div>
         ))}
       </Stack>
     </Container>
