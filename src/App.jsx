@@ -27,14 +27,18 @@ import { io } from "socket.io-client";
 let socket;
 export default () => {
   useEffect(() => {
-    socket = io('https://eye-save-noitfications.herokuapp.com');
-    socket.on('connect',() => {
-      console.log('SOCKET CONNECT ');
-    })
+    socket = io("https://eye-save-noitfications.herokuapp.com", {
+      extraHeaders: {
+        "Access-Control-Allow-Origin": "*",
+      },
+    });
+    socket.on("connect", () => {
+      console.log("SOCKET CONNECT ");
+    });
 
-    socket.on('delay',(paylod) => {
-        window.location.reload()
-    })
+    socket.on("delay", (paylod) => {
+      window.location.reload();
+    });
   }, []);
 
   const isLoggedIn =
