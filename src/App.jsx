@@ -27,7 +27,12 @@ import { io } from "socket.io-client";
 let socket;
 export default () => {
   useEffect(() => {
-    socket = io("https://eye-save-noitfications.herokuapp.com", {});
+    socket = io("https://eye-save-noitfications.herokuapp.com", {
+      withCredentials: true,
+      extraHeaders: {
+        "my-header": "abcd",
+      },
+    });
     socket.on("connect", () => {
       console.log("SOCKET CONNECT ");
     });
