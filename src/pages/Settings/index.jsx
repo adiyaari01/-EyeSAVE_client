@@ -14,10 +14,10 @@ import VideoSettingsTwoToneIcon from "@mui/icons-material/VideoSettingsTwoTone";
 import Grid from "@mui/material/Grid";
 import { CardUseStyles } from "./GridUseStyles";
 import Typography from "@mui/material/Typography";
-import { Avatar, TextField, Button } from "@mui/material";
+import { TextField, Button } from "@mui/material";
 import DateMomentUtils from "@date-io/moment";
 import { TimePicker, MuiPickersUtilsProvider } from "@material-ui/pickers";
-import { updateSettings } from "../../api";
+import { getSettingsById, updateSettings } from "../../api";
 import SettingsIcon from "@mui/icons-material/Settings";
 import { getUserFromSessionStorage } from "../../utils";
 import { alpha } from "@material-ui/core/styles";
@@ -41,6 +41,7 @@ export default memo(() => {
   const [cameraUrl2, setCameraUrl2] = React.useState("");
   const [cameraName3, setCameraName3] = React.useState("");
   const [cameraUrl3, setCameraUrl3] = React.useState("");
+  // const [settings, setSettings] = React.useState("");
 
   const handleClickOpenMorning = () => {
     setOpenMorning(true);

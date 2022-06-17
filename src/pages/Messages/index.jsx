@@ -103,18 +103,19 @@ const Messages = () => {
               <Select
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
-                defaultValue={"Choose"}
+               //  defaultValue={"Choose"}
                 sx={{
                   color: "#3F414D",
                   width: "100%",
                   minWidth: "150px",
                   height: "30px",
                 }}
+                value={form.userId || "choose"}
                 onChange={(e) => {
                   setForm({ ...form, userId: e.target.value });
                 }}
               >
-                <MenuItem value={"Choose"}>Choose</MenuItem>
+                <MenuItem value={"choose"}>Choose</MenuItem>
                 {parents.map((parent, i) => {
                   const parentFullName = `${parent._firstName} ${parent._lastName}`;
                   return (
