@@ -27,7 +27,7 @@ import { io } from "socket.io-client";
 let socket;
 export default () => {
   useEffect(() => {
-    socket = io('http://localhost:8001');
+    socket = io('https://eye-save-noitfications.herokuapp.com');
     socket.on('connect',() => {
       console.log('SOCKET CONNECT ');
     })
