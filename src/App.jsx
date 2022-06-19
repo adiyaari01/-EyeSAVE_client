@@ -40,6 +40,14 @@ export default () => {
     socket.on("delay", (paylod) => {
       window.location.reload();
     });
+
+    socket.on("EscortDelay", (paylod) => {
+      window.location.reload();
+    });
+
+    socket.on("absence", (paylod) => {
+      window.location.reload();
+    });
   }, []);
 
   const isLoggedIn =
